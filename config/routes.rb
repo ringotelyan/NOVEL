@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'homes/top'
-  end
+  devise_for :admins
+  devise_for :users
+
   namespace :public do
     get '/' => 'homes#top'
   end
