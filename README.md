@@ -31,8 +31,8 @@
 - 小説を書く人とつながりたいとき
 
 ## 設計書
-- - テーブル提議書(URL: https://docs.google.com/spreadsheets/d/1M2ILLw6dsf4YOn_NN2ffI2oiJ9_yTc7tsPfkOMGRFMs/edit#gid=1373217982)
-- - アプリケーション設計書(URL: https://docs.google.com/spreadsheets/d/11KiN49PhhFmr7rOHEIm0UyQiFiNhRf6PIbrEI1CRKss/edit#gid=1031934256)
+- テーブル提議書(URL: https://docs.google.com/spreadsheets/d/1M2ILLw6dsf4YOn_NN2ffI2oiJ9_yTc7tsPfkOMGRFMs/edit#gid=1373217982)
+- アプリケーション設計書(URL: https://docs.google.com/spreadsheets/d/11KiN49PhhFmr7rOHEIm0UyQiFiNhRf6PIbrEI1CRKss/edit#gid=1031934256)
 
 
 ## 開発環境
