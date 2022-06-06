@@ -74,4 +74,6 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
   config.hosts << "d06ca6af6860494e93790a678dcbc85a.vfs.cloud9.ap-northeast-1.amazonaws.com"
+  # ActiveStorage画像サイズ変更のコードエラー回避の記述
+  config.active_job.queue_adapter = :inline
 end
