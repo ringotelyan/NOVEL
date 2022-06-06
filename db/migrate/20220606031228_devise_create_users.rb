@@ -35,7 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       # ユーザー名を保存するカラム
       t.string :name, null: false
       # ユーザー紹介文を保存するカラム
-      t.string :introduction, null: false
+      t.string :introduction
       # 退会ステータスを保存するカラム
       t.boolean :is_deleted, null: false, default: false
 
