@@ -20,6 +20,12 @@ class Public::NovelsController < ApplicationController
     @novel = Novel.find(params[:id])
   end
 
+  def destroy
+    @novel = Novel.find(params[:id])
+    @novel.destroy
+    redirect_to public_novels_path
+  end
+
   # 投稿データのストロングパラメータ
   private
 
