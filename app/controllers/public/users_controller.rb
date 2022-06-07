@@ -1,4 +1,9 @@
 class Public::UsersController < ApplicationController
+
+  def index
+    @users = User.all
+  end
+  
   def show
     @user = User.find(params[:id])
     @novels = @user.novels # アソシエーションを持っているもの同士の記述
