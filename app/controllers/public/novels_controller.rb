@@ -24,6 +24,12 @@ class Public::NovelsController < ApplicationController
     @novel = Novel.find(params[:id])
   end
 
+  def update
+    novel = Novel.find(params[:id])
+    novel.update(novel_params)
+    redirect_to public_novel_path(novel.id)
+  end
+
   def destroy
     @novel = Novel.find(params[:id])
     @novel.destroy
