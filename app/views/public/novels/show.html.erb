@@ -1,2 +1,4 @@
-<h1>Public::Novels#show</h1>
-<p>Find me in app/views/public/novels/show.html.erb</p>
+<h1><%= @novel.title %></h1>
+<p><%= @novel.user.name %></p>
+<p><%= @novel.body %></p>
+<p>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></p>

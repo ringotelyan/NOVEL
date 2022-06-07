@@ -17,6 +17,7 @@ class Public::NovelsController < ApplicationController
   end
 
   def show
+    @novel = Novel.find(params[:id])
   end
 
   # 投稿データのストロングパラメータ
