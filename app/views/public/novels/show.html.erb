@@ -3,5 +3,6 @@
 <p><%= @novel.body %></p>
 <p>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></p>
 <% if @novel.user == current_user %>
+  <%= link_to "小説を編集する", edit_public_novel_path(@novel.id) %>
   <%= button_to "小説を削除する", public_novel_path(@novel), method: :delete %>
 <% end %>
