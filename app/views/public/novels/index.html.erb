@@ -1,0 +1,5 @@
+<h1>ゴフノベル一覧</h1>
+<% @novels.each do |novel| %>
+<p>タイトル: <%= novel.title %></p>
+<p>作家名: <%= novel.user.name %></p>
+<% end %>
