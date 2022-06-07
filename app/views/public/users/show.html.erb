@@ -1,2 +1,14 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<!--ユーザーの詳細-->
+<div>
+  <h3><%= @user.name %></h3>
+  <%= image_tag @user.get_profile_image(100, 100) %>
+</div>
+
+<!--ユーザーの投稿一覧-->
+<% @novels.each do |novel| %>
+  <p>
+    <%= link_to public_novel_path(novel.id) do %>
+      タイトル: <%= novel.title %>
+    <% end %>
+  </p>
+<% end %>
