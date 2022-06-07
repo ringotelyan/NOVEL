@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # User Adminの場合分けは最後にやる
   # sign_in後にどこに遷移するのか設定
   def after_sign_in_path_for(resource)
-    public_about_path
+    public_novels_path
   end
 
   def after_sign_out_path_for(resouece)

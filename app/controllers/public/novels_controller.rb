@@ -17,6 +17,23 @@ class Public::NovelsController < ApplicationController
   end
 
   def show
+    @novel = Novel.find(params[:id])
+  end
+
+  def edit
+    @novel = Novel.find(params[:id])
+  end
+
+  def update
+    novel = Novel.find(params[:id])
+    novel.update(novel_params)
+    redirect_to public_novel_path(novel.id)
+  end
+
+  def destroy
+    @novel = Novel.find(params[:id])
+    @novel.destroy
+    redirect_to public_novels_path
   end
 
   # 投稿データのストロングパラメータ
