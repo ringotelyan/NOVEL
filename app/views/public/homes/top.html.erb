@@ -1,2 +1,16 @@
-<h1>Topページ</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-4 offset-4">
+      <p>
+        ようこそ5HUNOVEL-ゴフノベル-へ！<br>
+        ゴフノベルは、<br>
+        「５分で読める超短編小説」に特化した<br>
+        小説投稿サイトです。<br>
+        ともに５分の世界を楽しみましょう！<br>
 
+        <%= link_to "ログイン", new_user_session_path, class:"btn btn-secondary" %>
+        <%= link_to "新規会員登録", new_user_registration_path, class:"btn btn-danger" %>
+      </p>
+    </div>
+  </div>
+</div>
