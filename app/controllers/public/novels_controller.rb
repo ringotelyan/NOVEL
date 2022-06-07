@@ -20,6 +20,10 @@ class Public::NovelsController < ApplicationController
     @novel = Novel.find(params[:id])
   end
 
+  def edit
+    @novel = Novel.find(params[:id])
+  end
+
   def destroy
     @novel = Novel.find(params[:id])
     @novel.destroy
