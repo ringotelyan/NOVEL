@@ -6,4 +6,5 @@
   <% end %>
 </p>
 <p>作家名: <%= novel.user.name %></p>
+<p><%= link_to "#{novel.novel_comments.count} コメント", public_novel_path(novel.id) %></p>
 <% end %>

@@ -6,3 +6,22 @@
   <%= link_to "小説を編集する", edit_public_novel_path(@novel.id) %>
   <%= button_to "小説を削除する", public_novel_path(@novel), method: :delete %>
 <% end %>
+
+<div>
+  <p>コメント件数: <%= @novel.novel_comments.count %></p>
+  <% @novel.novel_comments.each do |novel_comment| %>
+    <p><%= image_tag novel_comment.user.get_profile_image(100, 100) %></p>
+    <%= novel_comment.user.name %>
+    <%= novel_comment.created_at.strftime('%Y/%m/%d') %><%= novel_comment.comment %>
+    <% if novel_comment.user == current_user %>
+      <%= link_to "コメントを削除する", public_novel_novel_comment_path(novel_comment.novel, novel_comment), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <%= form_with model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "コメント送信" %>
+  <% end %>
+</div>
