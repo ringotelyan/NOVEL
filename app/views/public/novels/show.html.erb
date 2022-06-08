@@ -6,6 +6,19 @@
   <%= link_to "小説を編集する", edit_public_novel_path(@novel.id) %>
   <%= button_to "小説を削除する", public_novel_path(@novel), method: :delete %>
 <% end %>
+<% if @novel.favorited_by?(current_user) %>
+  <p>
+    <%= link_to public_novel_favorites_path(@novel), method: :delete do %>
+      ♥<%= @novel.favorites.count %> いいね
+    <% end %>
+  </p>
+  <% else %>
+  <p>
+    <%= link_to public_novel_favorites_path(@novel), method: :post do %>
+      ♡<%= @novel.favorites.count %> いいね
+    <% end %>
+  </p>
+<% end %>
 
 <div>
   <p>コメント件数: <%= @novel.novel_comments.count %></p>
