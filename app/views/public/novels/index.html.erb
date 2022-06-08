@@ -1,2 +1,9 @@
-<h1>ゴフノベル一覧</h1>
-<%= render 'list', novels: @novels %>
+<div class="container">
+  <div class="row">
+    <%= render 'public/users/list', user: @user %>
+    <div class="col-9">
+      <h3>ゴフノベル一覧</h3>
+      <%= render 'list', novels: @novels %>
+    </div>
+  </div>
+</div>

@@ -14,6 +14,7 @@ class Public::NovelsController < ApplicationController
 
   def index
     @novels = Novel.all
+    @user = current_user
   end
 
   def show
