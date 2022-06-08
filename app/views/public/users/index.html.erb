@@ -4,26 +4,26 @@
 
     <div class="col-9">
       <h2>ユーザー一覧</h2>
-      <% @users.each do |user| %>
         <table class="table">
           <tr>
             <th></th>
             <th>ユーザー名</th>
           </tr>
-          <tr>
-            <td>
-              <%= link_to public_user_path(user.id) do %>
-                <%= image_tag user.get_profile_image(100, 100) %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to public_user_path(user.id) do %>
-                <%= user.name %>
-              <% end %>
-            </td>
-          </tr>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= link_to public_user_path(user.id) do %>
+                  <%= image_tag user.get_profile_image(100, 100) %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to public_user_path(user.id) do %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         </table>
-      <% end %>
     </div>
   </div>
 </div>
