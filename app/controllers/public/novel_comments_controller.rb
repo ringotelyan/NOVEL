@@ -8,6 +8,11 @@ class Public::NovelCommentsController < ApplicationController
     redirect_to public_novel_path(novel)
   end
 
+  def destroy
+    NovelComment.find(params[:id]).destroy
+    redirect_to public_novel_path(params[:novel_id])
+  end
+
   private
 
   def novel_comment_params
