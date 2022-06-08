@@ -1,0 +1,19 @@
+<div class="col-3">
+  <h2>ユーザー<br>プロフィール</h2>
+  <div>
+    <table class="table">
+      <tr><td><%= image_tag user.get_profile_image(100,100) %></td></tr>
+      <tr><td><%= user.name %></td></tr>
+      <tr><td>自己紹介</td></tr>
+      <tr><td><%= user.introduction %></td></tr>
+      <% if user == current_user %>
+        <tr>
+          <td><%= link_to "新規投稿はこちら", public_novels_path, method: :post %></td>
+        </tr>
+        <tr>
+          <td><%= link_to "プロフィール編集", edit_public_user_path(user) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
