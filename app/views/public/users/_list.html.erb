@@ -8,7 +8,7 @@
       <tr><td><%= user.introduction %></td></tr>
       <% if user == current_user %>
         <tr>
-          <td><%= link_to "新規投稿はこちら", public_novels_path, method: :post, class: "btn btn-primary" %></td>
+          <td><%= link_to "新規投稿はこちら", new_public_novel_path, class: "btn btn-primary" %></td>
         </tr>
         <tr>
           <td><%= link_to "プロフィール編集", edit_public_user_path(user), class: "btn btn-success" %></td>
