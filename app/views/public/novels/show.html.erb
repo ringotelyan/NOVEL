@@ -1,40 +1,77 @@
-<h1><%= @novel.title %></h1>
-<p><%= @novel.user.name %></p>
-<p><%= @novel.body %></p>
-<p>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></p>
-<% if @novel.user == current_user %>
-  <%= link_to "小説を編集する", edit_public_novel_path(@novel.id) %>
-  <%= button_to "小説を削除する", public_novel_path(@novel), method: :delete %>
-<% end %>
-<% if @novel.favorited_by?(current_user) %>
-  <p>
-    <%= link_to public_novel_favorites_path(@novel), method: :delete do %>
-      ♥<%= @novel.favorites.count %> いいね
-    <% end %>
-  </p>
-  <% else %>
-  <p>
-    <%= link_to public_novel_favorites_path(@novel), method: :post do %>
-      ♡<%= @novel.favorites.count %> いいね
-    <% end %>
-  </p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <table class="table table-borderless">
+        <tr><td><h3><%= @novel.title %></h3></td></tr>
+        <tr><td><%= @novel.user.name %></td></tr>
+        <tr><td><%= @novel.body %></td></tr>
+        <tr>
+          <td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td>
+          <% if @novel.favorited_by?(current_user) %>
+            <td>
+              <%= link_to public_novel_favorites_path(@novel), method: :delete do %>
+                ♥<%= @novel.favorites.count %> いいね
+              <% end %>
+            </td>
+            <% else %>
+            <td>
+              <%= link_to public_novel_favorites_path(@novel), method: :post do %>
+                ♡<%= @novel.favorites.count %> いいね
+              <% end %>
+            </td>
+          <% end %>
+          <td>コメント件数: <%= @novel.novel_comments.count %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ユーザー名</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @novel.novel_comments.each do |novel_comment| %>
+            <tr>
+              <td><%= image_tag novel_comment.user.get_profile_image(100, 100) %></td>
+              <td><%= novel_comment.user.name %></td>
+              <td><%= novel_comment.comment %></td>
+              <td><%= novel_comment.created_at.strftime('%Y/%m/%d') %></td>
+              <% if novel_comment.user == current_user %>
+              <td>
+                <%= link_to "コメントを削除する", public_novel_novel_comment_path(novel_comment.novel, novel_comment), method: :delete %>
+              </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <table class="table table-borderless">
+        <%= form_with model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post do |f| %>
+          <tr>
+            <td><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", cols: 100 %></td>
+          </tr>
+          <tr><td><%= f.submit "コメント送信" %></td></tr>
+        <% end %>
+        <% if @novel.user == current_user %>
+          <tr>
+            <td><%= link_to "小説を編集する", edit_public_novel_path(@novel.id) %></td>
+            <td><%= button_to "小説を削除する", public_novel_path(@novel), method: :delete %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 
-<div>
-  <p>コメント件数: <%= @novel.novel_comments.count %></p>
-  <% @novel.novel_comments.each do |novel_comment| %>
-    <p><%= image_tag novel_comment.user.get_profile_image(100, 100) %></p>
-    <%= novel_comment.user.name %>
-    <%= novel_comment.created_at.strftime('%Y/%m/%d') %><%= novel_comment.comment %>
-    <% if novel_comment.user == current_user %>
-      <%= link_to "コメントを削除する", public_novel_novel_comment_path(novel_comment.novel, novel_comment), method: :delete %>
-    <% end %>
-  <% end %>
-</div>
-
-<div>
-  <%= form_with model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "コメント送信" %>
-  <% end %>
 </div>
