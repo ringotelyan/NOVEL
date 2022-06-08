@@ -46,7 +46,7 @@
               <td><%= novel_comment.created_at.strftime('%Y/%m/%d') %></td>
               <% if novel_comment.user == current_user %>
               <td>
-                <%= link_to "コメントを削除する", public_novel_novel_comment_path(novel_comment.novel, novel_comment), method: :delete %>
+                <%= link_to "コメントを削除する", public_novel_novel_comment_path(novel_comment.novel, novel_comment), method: :delete, class: "btn btn-danger" %>
               </td>
               <% end %>
             </tr>
@@ -64,14 +64,17 @@
           </tr>
           <tr><td><%= f.submit "コメント送信" %></td></tr>
         <% end %>
+      </table>
+    </div>
+    <div class="col-4 offset-4">
+      <table class="table table-borderless">
         <% if @novel.user == current_user %>
           <tr>
-            <td><%= link_to "小説を編集する", edit_public_novel_path(@novel.id) %></td>
-            <td><%= button_to "小説を削除する", public_novel_path(@novel), method: :delete %></td>
+            <td><%= link_to "小説を編集する", edit_public_novel_path(@novel.id), class: "btn btn-success" %></td>
+            <td><%= button_to "小説を削除する", public_novel_path(@novel), method: :delete, class: "btn btn-danger" %></td>
           </tr>
         <% end %>
       </table>
     </div>
   </div>
-
 </div>
