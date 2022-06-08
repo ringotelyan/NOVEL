@@ -1,6 +1,6 @@
 class Novel < ApplicationRecord
 
   belongs_to :user
-  has_many :comments, dependent: :destroy
+  has_many :novel_comments, dependent: :destroy
 
 end
