@@ -1,10 +1,8 @@
-<h1>ゴフノベル一覧</h1>
-<% @novels.each do |novel| %>
-<p>
-  <%= link_to public_novel_path(novel.id) do %>
-    タイトル: <%= novel.title %>
-  <% end %>
-</p>
-<p>作家名: <%= novel.user.name %></p>
-<p><%= link_to "#{novel.novel_comments.count} コメント", public_novel_path(novel.id) %></p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <%= render 'public/users/list', user: @user %>
+    <div class="col-9">
+      <%= render 'list', novels: @novels %>
+    </div>
+  </div>
+</div>

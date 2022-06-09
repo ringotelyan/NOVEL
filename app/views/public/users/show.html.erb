@@ -1,19 +1,11 @@
-<!--ユーザーの詳細-->
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100, 100) %>
-  <%= @user.introduction %>
-  <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_public_user_path(@user) %></p>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <!--ユーザーの詳細-->
+    <%= render 'list', user: @user %>
+    
+    
+    <!--ユーザーの投稿一覧-->
+    <%= render 'public/novels/list', novels: @novels %>
+  </div>
 </div>
 
-<!--ユーザーの投稿一覧-->
-<% @novels.each do |novel| %>
-  <p>
-    <%= link_to public_novel_path(novel.id) do %>
-      タイトル: <%= novel.title %>
-    <% end %>
-  </p>
-  <p><%= link_to "#{novel.novel_comments.count} コメント", public_novel_path(novel.id) %></p>
-<% end %>

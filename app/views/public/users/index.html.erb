@@ -1,7 +1,29 @@
-<h1>ユーザー一覧</h1>
-<% @users.each do |user| %>
-<%= link_to public_user_path(user.id) do %>
-  <%= image_tag user.get_profile_image(100, 100) %>
-  <%= user.name %>
-<% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <%= render 'list', user: @user %>
+
+    <div class="col-9">
+      <h2>ユーザー一覧</h2>
+        <table class="table">
+          <tr>
+            <th></th>
+            <th>ユーザー名</th>
+          </tr>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= link_to public_user_path(user.id) do %>
+                  <%= image_tag user.get_profile_image(100, 100) %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to public_user_path(user.id) do %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+    </div>
+  </div>
+</div>

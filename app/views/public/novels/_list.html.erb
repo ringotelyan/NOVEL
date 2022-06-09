@@ -1,0 +1,25 @@
+<div class="col-9">
+  <h3>ゴフノベル一覧</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>タイトル</th>
+          <th>作家名</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% novels.each do |novel| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to public_novel_path(novel.id) do %>
+                <%= novel.title %>
+              <% end %>
+            </td>
+            <td><%= novel.user.name %></td>
+            <td><%= link_to "#{novel.novel_comments.count} コメント", public_novel_path(novel.id) %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+</div>
