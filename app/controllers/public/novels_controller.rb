@@ -8,8 +8,11 @@ class Public::NovelsController < ApplicationController
   def create
     @novel = Novel.new(novel_params)
     @novel.user_id = current_user.id # 投稿データにログイン中のユーザーのIDを持たせる
-    @novel.save
-    redirect_to public_novels_path
+    if @novel.save
+      redirect_to public_novel_path(@novel.id)
+    else
+      render :new
+    end
   end
 
   def index
