@@ -2,14 +2,7 @@
   <div class="row">
     <div class="col-8 offset-2">
       <h3>ゴフノベル投稿フォーム</h3>
-      <% if @novel.errors.any? %>
-        <%= @novel.errors.count %>件のエラーが発生しました
-        <ul>
-          <% @novel.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
+      <%= render 'error', novel: @novel %>
       <%= form_with model: @novel, url: public_novels_path, method: :post do |f| %>
         <table class="table table-borderless">
           <tr><td><strong>タイトル</strong></td></tr>

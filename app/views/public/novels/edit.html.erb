@@ -1,4 +1,11 @@
-<h1>小説編集</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h3>ゴフノベル編集フォーム</h3>
+      <%= render 'error', novel: @novel %>
+    </div>
+  </div>
+</div>
 
 <%= form_with model: @novel, url: public_novel_path(@novel.id), method: :patch do |f| %>
 
