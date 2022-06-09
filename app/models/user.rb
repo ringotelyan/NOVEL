@@ -18,4 +18,14 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  # find_or_create_by!でゲストユーザーがなければ作成、あれば取り出す。
+  # ゲストユーザーがないときに作成するユーザー情報を記述
+  def self.guest
+    find_or_create_by!(email: 'aaa@aaa.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.name = 'ゲストユーザー'
+    end
+  end
+
 end
