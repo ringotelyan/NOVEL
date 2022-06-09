@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  # deviseに新たにルーティングを追加（スコープを経由）（ゲストログイン機能）
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#new_guest'
+  end
 
   # 管理者
   # skipは不要なルーティングを削除
