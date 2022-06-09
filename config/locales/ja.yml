@@ -1,0 +1,12 @@
+# バリデーションのエラーメッセージのカラム名を日本語に対応する
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        introduction: 自己紹介文
+      novel:
+        title: タイトル
+        body: 小説本文
