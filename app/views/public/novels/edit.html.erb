@@ -3,18 +3,16 @@
     <div class="col-8 offset-2">
       <h3>ゴフノベル編集フォーム</h3>
       <%= render 'error', novel: @novel %>
+      <%= form_with model: @novel, url: public_novel_path(@novel.id), method: :patch do |f| %>
+        <table class="table table-borderless">
+          <tr><td><strong>タイトル</strong></td></tr>
+          <tr><td><%= f.text_field :title, size: 85 %></td></tr>
+          <tr><td><strong>小説本文</strong></td></tr>
+          <tr><td><%= f.text_area :body, rows: 10, cols: 90 %></td></tr>
+          <tr><td><%= f.submit '変更を保存する' %></td></tr>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>
 
-<%= form_with model: @novel, url: public_novel_path(@novel.id), method: :patch do |f| %>
-
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-
-  <h4>本文</h4>
-  <%= f.text_area :body %>
-
-  <%= f.submit '保存' %>
-
-<% end %>

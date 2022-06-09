@@ -30,9 +30,12 @@ class Public::NovelsController < ApplicationController
   end
 
   def update
-    novel = Novel.find(params[:id])
-    novel.update(novel_params)
-    redirect_to public_novel_path(novel.id)
+    @novel = Novel.find(params[:id])
+    if @novel.update(novel_params)
+      redirect_to public_novel_path(@novel.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
