@@ -6,6 +6,12 @@
       <tr><td><%= user.name %></td></tr>
       <tr><td>自己紹介</td></tr>
       <tr><td><%= user.introduction %></td></tr>
+      <tr>
+        <td><%= user.followings.count %>フォロー</td>
+      </tr>
+      <tr>
+        <td><%= user.followers.count %>フォロワー</td>
+      </tr>
       <% if user == current_user %>
         <tr>
           <td><%= link_to "新規投稿はこちら", new_public_novel_path, class: "btn btn-primary" %></td>
@@ -15,14 +21,16 @@
         </tr>
       <% end %>
 
-      <% if current_user.following?(user) %>
-        <tr><td>
-          <%= link_to "フォロー外す", public_user_relationships_path(user), method: :delete, class: "btn btn-danger" %>
-        </td></tr>
-      <% else %>
-        <tr><td>
-          <%= link_to "フォローする", public_user_relationships_path(user), method: :post, class: "btn btn-success" %>
-        </td></tr>
+      <% unless current_user == user %>
+        <% if current_user.following?(user) %>
+          <tr><td>
+            <%= link_to "フォロー外す", public_user_relationships_path(user), method: :delete, class: "btn btn-danger" %>
+          </td></tr>
+        <% else %>
+          <tr><td>
+            <%= link_to "フォローする", public_user_relationships_path(user), method: :post, class: "btn btn-success" %>
+          </td></tr>
+        <% end %>
       <% end %>
     </table>
   </div>

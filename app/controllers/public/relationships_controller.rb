@@ -3,7 +3,8 @@ class Public::RelationshipsController < ApplicationController
   # フォローするとき
   def create
     current_user.follow(params[:user_id])
-    redirect_to request.referer　# "request.referer"は遷移前のURLを取得する際に使う
+    # "request.referer"は遷移前のURLを取得する際に使う
+    redirect_to request.referer
   end
 
   # フォロー外すとき
@@ -20,7 +21,7 @@ class Public::RelationshipsController < ApplicationController
 
   # フォロワー一覧
   def followers
-    user = User.find(oarams[:user_id])
+    user = User.find(params[:user_id])
     @users = user.followers
   end
 
