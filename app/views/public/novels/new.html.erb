@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8 offset-2 mt-5">
       <h3>ゴフノベル投稿フォーム</h3>
+      <%= render 'error', novel: @novel %>
       <%= form_with model: @novel, url: public_novels_path, method: :post do |f| %>
         <table class="table table-borderless">
           <tr><td><strong>タイトル</strong></td></tr>

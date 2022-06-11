@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!, except: [:top, :about] # ログインしていないユーザーはtopとabout以外にアクセスできない
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # User Adminの場合分けは最後にやる

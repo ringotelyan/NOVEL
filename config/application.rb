@@ -10,7 +10,8 @@ module NOVEL
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-
+    config.i18n.default_locale = :ja # バリデーションのエラーメッセージを日本語化
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s] #ymlファイルを読み込む指示
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
