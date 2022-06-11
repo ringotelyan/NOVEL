@@ -21,7 +21,19 @@
                   <%= user.name %>
                 <% end %>
               </td>
+              <% unless current_user == user %>
+                <% if current_user.following?(user) %>
+                  <td>
+                    <%= link_to "フォロー外す", public_user_relationships_path(user), method: :delete, class: "btn btn-danger" %>
+                  </td>
+                <% else %>
+                  <td>
+                    <%= link_to "フォローする", public_user_relationships_path(user), method: :post, class: "btn btn-success" %>
+                  </td>
+                <% end %>
+              <% end %>
             </tr>
+
           <% end %>
         </table>
     </div>
