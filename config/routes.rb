@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :users, only: [:index, :show, :edit]
+    resources :users, only: [:index, :show, :edit, :update]
   end
 
   namespace :public, path: "" do
