@@ -23,6 +23,10 @@ Rails.application.routes.draw do
     get '/' => "homes#top"
     get '/about' => 'homes#about'
     get "search" => "searches#search"
+    # 退会確認画面
+    get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    # 論理削除用のルーティング
+    patch '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
     resources :novels do
       # 1人のユーザーは1つの投稿に対して1回しか良いね出来ない→resourceを使ってURLに[:id]を含めない
       resource :favorites, only: [:create, :destroy]
