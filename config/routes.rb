@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   namespace :public, path: "" do
     get '/' => "homes#top"
     get '/about' => 'homes#about'
+    get "search" => "searches#search"
     resources :novels do
       # 1人のユーザーは1つの投稿に対して1回しか良いね出来ない→resourceを使ってURLに[:id]を含めない
       resource :favorites, only: [:create, :destroy]
