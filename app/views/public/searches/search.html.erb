@@ -1,0 +1,14 @@
+<% if @range == "User" %>
+  <h2>ユーザー検索結果 "<%= @word %>"</h2>
+  <% @users.each do |user| %>
+    <%= image_tag user.get_profile_image(50, 50) %>
+    <%= user.name %>
+  <% end %>
+
+<% else %>
+  <h2>ゴフノベル検索結果 "<%= @word %>"</h2>
+  <% @novels.each do |novel| %>
+    <%= novel.title %>
+    <%= novel.user.name %>
+  <% end %>
+<% end %>
