@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @users = User.where(is_deleted: false)
     @user = current_user
   end
 
@@ -21,6 +21,20 @@ class Public::UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def unsubscribe
+  end
+
+  def withdraw
+    @user = User.find(current_user.id)
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    # 退会状態を作り出す
+    @user.update(is_deleted: true)
+    # セッション情報をすべて削除
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to public_path
   end
 
   private

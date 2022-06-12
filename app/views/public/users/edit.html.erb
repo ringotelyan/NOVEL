@@ -19,6 +19,7 @@
           <tr><td><label for="inputIntroduction">自己紹介</label></td></tr>
           <tr><td><%= f.text_area :introduction, autofocus: true, rows: 5, cols: 50, id: "inputIntroduction", placeholder:"自己紹介" %></td></tr>
           <tr><td><%= f.submit '投稿する' %></td></tr>
+          <tr><td><%= link_to "退会する", public_users_unsubscribe_path, class: "btn btn-danger" %></td></tr>
         </table>
       <% end %>
     </div>
