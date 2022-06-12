@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update]
+  end
+
   namespace :public, path: "" do
     get '/' => "homes#top"
     get '/about' => 'homes#about'

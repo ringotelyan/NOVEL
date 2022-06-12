@@ -1,15 +1,24 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, except: [:top, :about] # ログインしていないユーザーはtopとabout以外にアクセスできない
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # User Adminの場合分けは最後にやる
   # sign_in後にどこに遷移するのか設定
   def after_sign_in_path_for(resource)
-    public_novels_path
+    case resource
+    when Admin
+      admin_users_path
+    when User
+      public_novels_path
+    end
   end
 
-  def after_sign_out_path_for(resouece)
-    public_about_path
+  def after_sign_out_path_for(resource)
+    case resource
+    when :admin
+      new_admin_session_path
+    when :user
+      public_about_path
+    end
   end
 
   protected
