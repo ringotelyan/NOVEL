@@ -3,13 +3,17 @@
     <div class="col-8 offset-2">
       <table class="table table-borderless">
         <tr><td><h3><%= @novel.title %></h3></td></tr>
-        <tr><td><%= @novel.user.name %></td></tr>
+        <tr><td>
+          <%= link_to public_user_path(@novel.user), class:"text-secondary" do %>
+            <%= @novel.user.name %>
+          <% end %>
+        </td></tr>
         <tr><td><%= @novel.body %></td></tr>
         <tr><td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td></tr>
+      </table>
+      <table class="table table-borderless">
         <tr id="novel_<%= @novel.id %>">
           <td id="novel_<%= @novel.id %>_btn"><%= render "public/favorites/btn", novel: @novel %></td>
-        </tr>
-        <tr>
           <td id="comment_count">コメント件数: <%= @novel.novel_comments.count %></td>
         </tr>
       </table>
