@@ -7,15 +7,15 @@
         <tr><td><%= @novel.body %></td></tr>
         <tr id="novel_<%= @novel.id %>">
           <td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td>
-          <td class="btn"><%= render "public/favorites/btn", novel: @novel %></td>
-          <td>コメント件数: <%= @novel.novel_comments.count %></td>
+          <td id="novel_<%= @novel.id %>_btn"><%= render "public/favorites/btn", novel: @novel %></td>
+          <td id="comment_count">コメント件数: <%= @novel.novel_comments.count %></td>
         </tr>
       </table>
     </div>
   </div>
   <div class="row">
     <div class="col-8 offset-2">
-      <table class="table table-borderless">
+      <table class="table table-borderless novel_comments">
         <thead>
           <tr>
             <th></th>
@@ -25,7 +25,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="comment_area">
           <%= render 'public/novel_comments/index', novel: @novel %>
         </tbody>
       </table>
@@ -34,7 +34,7 @@
   <div class="row">
     <div class="col-8 offset-2">
       <table class="table table-borderless">
-        <%= form_with model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post do |f| %>
+        <%= form_with model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post, local: false do |f| %>
           <tr>
             <td><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", cols: 100 %></td>
           </tr>
