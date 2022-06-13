@@ -7,19 +7,7 @@
         <tr><td><%= @novel.body %></td></tr>
         <tr>
           <td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td>
-          <% if @novel.favorited_by?(current_user) %>
-            <td>
-              <%= link_to public_novel_favorites_path(@novel), method: :delete do %>
-                ♥<%= @novel.favorites.count %> いいね
-              <% end %>
-            </td>
-            <% else %>
-            <td>
-              <%= link_to public_novel_favorites_path(@novel), method: :post do %>
-                ♡<%= @novel.favorites.count %> いいね
-              <% end %>
-            </td>
-          <% end %>
+          <td><%= render "public/favorites/btn", novel: @novel %></td>
           <td>コメント件数: <%= @novel.novel_comments.count %></td>
         </tr>
       </table>
