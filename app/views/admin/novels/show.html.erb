@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h4><%= @novel.title %></h4><br>
+      <p><%= @novel.user.name %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <table class="table">
+        <tr>
+          <td><%= @novel.body %></td>
+        </tr>
+        <tr>
+          <td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to "内容を編集する", edit_admin_novel_path(@novel), class: "btn btn-success" %>
+          </td>
+          <td>
+            <%= link_to "小説を削除する", admin_novel_path, method: :delete, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

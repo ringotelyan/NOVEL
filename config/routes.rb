@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
+    resources :novels, only: [:index, :show, :edit, :update, :destroy]
   end
 
   namespace :public, path: "" do
