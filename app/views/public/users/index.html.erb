@@ -10,7 +10,7 @@
             <th>ユーザー名</th>
           </tr>
           <% @users.each do |user| %>
-            <tr>
+            <tr id="follow-form">
               <td>
                 <%= link_to public_user_path(user.id) do %>
                   <%= image_tag user.get_profile_image(100, 100) %>
@@ -21,7 +21,9 @@
                   <%= user.name %>
                 <% end %>
               </td>
-              <%= render 'public/relationships/follow_btn', user: user %>
+              <td>
+                <%= render 'public/relationships/follow_btn', user: user %>
+              </td>
             </tr>
 
           <% end %>

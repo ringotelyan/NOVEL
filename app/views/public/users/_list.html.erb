@@ -28,8 +28,11 @@
           <td><%= link_to "プロフィール編集", edit_public_user_path(user), class: "btn btn-success" %></td>
         </tr>
       <% end %>
-
-      <%= render 'public/relationships/follow_btn', user: user %>
+      <tr id="follow-form">
+        <td>
+        <%= render 'public/relationships/follow_btn', user: user %>
+        </td>
+      </tr>
     </table>
   </div>
 </div>
