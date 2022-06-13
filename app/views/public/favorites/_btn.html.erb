@@ -1,9 +1,7 @@
 <% if novel.favorited_by?(current_user) %>
-  <%= link_to public_novel_favorites_path(novel), method: :delete, remote: true do %>
-    ♥<%= novel.favorites.count %> いいね
-  <% end %>
+  <%= link_to "ブックマーク解除", public_novel_favorites_path(novel), method: :delete, class: "btn btn-secondary", remote: true %><br>
+  ブックマーク数:<%= novel.favorites.count %>
 <% else %>
-  <%= link_to public_novel_favorites_path(novel), method: :post, remote: true do %>
-    ♡<%= novel.favorites.count %> いいね
-  <% end %>
+  <%= link_to "ブックマーク", public_novel_favorites_path(novel), method: :post, class: "btn btn-light", remote: true %><br>
+  ブックマーク数:<%= novel.favorites.count %>
 <% end %>
