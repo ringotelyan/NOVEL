@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :set_user, only: [:favorites]
 
   def index
     @users = User.where(is_deleted: false)
@@ -8,6 +9,8 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @novels = @user.novels # アソシエーションを持っているもの同士の記述
+    favorites = Favorite.where(user_id: @user.id).pluck(:novel_id)
+    @favorite_novels = Novel.find(favorites)
   end
 
   def edit
@@ -37,10 +40,19 @@ class Public::UsersController < ApplicationController
     redirect_to public_path
   end
 
+  def favorites
+    favorites = Favorite.where(user_id: @user.id).pluck(:novel_id)
+    @favorite_novels = Novel.find(favorites)
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end

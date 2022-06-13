@@ -2,10 +2,15 @@
   <div class="row">
     <!--ユーザーの詳細-->
     <%= render 'list', user: @user %>
-    
-    
+
+
     <!--ユーザーの投稿一覧-->
-    <%= render 'public/novels/list', novels: @novels %>
+    <div class="col-9">
+      <h4>投稿済みゴフノベル一覧</h4>
+      <%= render 'public/novels/list', novels: @novels %>
+      <h4>ブックマークしたゴフノベル一覧</h4>
+      <%= render 'public/novels/list', novels: @favorite_novels %>
+    </div>
   </div>
 </div>
 

@@ -5,29 +5,17 @@
         <tr><td><h3><%= @novel.title %></h3></td></tr>
         <tr><td><%= @novel.user.name %></td></tr>
         <tr><td><%= @novel.body %></td></tr>
-        <tr>
+        <tr id="novel_<%= @novel.id %>">
           <td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td>
-          <% if @novel.favorited_by?(current_user) %>
-            <td>
-              <%= link_to public_novel_favorites_path(@novel), method: :delete do %>
-                ♥<%= @novel.favorites.count %> いいね
-              <% end %>
-            </td>
-            <% else %>
-            <td>
-              <%= link_to public_novel_favorites_path(@novel), method: :post do %>
-                ♡<%= @novel.favorites.count %> いいね
-              <% end %>
-            </td>
-          <% end %>
-          <td>コメント件数: <%= @novel.novel_comments.count %></td>
+          <td id="novel_<%= @novel.id %>_btn"><%= render "public/favorites/btn", novel: @novel %></td>
+          <td id="comment_count">コメント件数: <%= @novel.novel_comments.count %></td>
         </tr>
       </table>
     </div>
   </div>
   <div class="row">
     <div class="col-8 offset-2">
-      <table class="table table-borderless">
+      <table class="table table-borderless novel_comments">
         <thead>
           <tr>
             <th></th>
@@ -37,20 +25,8 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          <% @novel.novel_comments.each do |novel_comment| %>
-            <tr>
-              <td><%= image_tag novel_comment.user.get_profile_image(100, 100) %></td>
-              <td><%= novel_comment.user.name %></td>
-              <td><%= novel_comment.comment %></td>
-              <td><%= novel_comment.created_at.strftime('%Y/%m/%d') %></td>
-              <% if novel_comment.user == current_user %>
-              <td>
-                <%= link_to "コメントを削除する", public_novel_novel_comment_path(novel_comment.novel, novel_comment), method: :delete, class: "btn btn-danger" %>
-              </td>
-              <% end %>
-            </tr>
-          <% end %>
+        <tbody id="comment_area">
+          <%= render 'public/novel_comments/index', novel: @novel %>
         </tbody>
       </table>
     </div>
@@ -58,7 +34,7 @@
   <div class="row">
     <div class="col-8 offset-2">
       <table class="table table-borderless">
-        <%= form_with model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post do |f| %>
+        <%= form_with model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post, local: false do |f| %>
           <tr>
             <td><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", cols: 100 %></td>
           </tr>

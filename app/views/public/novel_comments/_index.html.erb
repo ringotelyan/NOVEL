@@ -1,0 +1,3 @@
+          <% novel.novel_comments.each do |novel_comment| %>
+            <%= render "public/novel_comments/comment.html.erb", novel_comment: novel_comment%>
+          <% end %>
