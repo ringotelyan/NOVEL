@@ -5,9 +5,11 @@
         <tr><td><h3><%= @novel.title %></h3></td></tr>
         <tr><td><%= @novel.user.name %></td></tr>
         <tr><td><%= @novel.body %></td></tr>
+        <tr><td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td></tr>
         <tr id="novel_<%= @novel.id %>">
-          <td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td>
           <td id="novel_<%= @novel.id %>_btn"><%= render "public/favorites/btn", novel: @novel %></td>
+        </tr>
+        <tr>
           <td id="comment_count">コメント件数: <%= @novel.novel_comments.count %></td>
         </tr>
       </table>
