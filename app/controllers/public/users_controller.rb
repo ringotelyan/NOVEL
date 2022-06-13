@@ -40,11 +40,6 @@ class Public::UsersController < ApplicationController
     redirect_to public_path
   end
 
-  def favorites
-    favorites = Favorite.where(user_id: @user.id).pluck(:novel_id)
-    @favorite_novels = Novel.find(favorites)
-  end
-
   private
 
   def user_params

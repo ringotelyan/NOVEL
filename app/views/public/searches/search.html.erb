@@ -1,14 +1,49 @@
-<% if @range == "User" %>
-  <h2>ユーザー検索結果 "<%= @word %>"</h2>
-  <% @users.each do |user| %>
-    <%= image_tag user.get_profile_image(50, 50) %>
-    <%= user.name %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2 mt-3">
+      <% if @range == "User" %>
+        <h4>ユーザー検索結果 "<%= @word %>"</h4>
+        <table class="table">
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <%= link_to public_user_path(user) do %>
+                    <%= image_tag user.get_profile_image(50, 50) %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to public_user_path(user) do %>
+                    <%= user.name %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-<% else %>
-  <h2>ゴフノベル検索結果 "<%= @word %>"</h2>
-  <% @novels.each do |novel| %>
-    <%= novel.title %>
-    <%= novel.user.name %>
-  <% end %>
-<% end %>
+      <% else %>
+        <h4>ゴフノベル検索結果 "<%= @word %>"</h4>
+        <table class="table">
+          <tbody>
+            <% @novels.each do |novel| %>
+              <tr>
+                <td>
+                  <%= link_to public_novel_path(novel) do %>
+                    <%= novel.title %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to public_user_path(novel.user) do %>
+                    <%= novel.user.name %>
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% end %>
+
+    </div>
+  </div>
+</div>

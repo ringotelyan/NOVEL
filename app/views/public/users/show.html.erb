@@ -5,10 +5,10 @@
 
 
     <!--ユーザーの投稿一覧-->
-    <div class="col-9">
+    <div class="col-9 mt-3">
       <h4>投稿済みゴフノベル一覧</h4>
       <%= render 'public/novels/list', novels: @novels %>
-      <h4>ブックマークしたゴフノベル一覧</h4>
+      <h4 class="mt-5">ブックマークしたゴフノベル一覧</h4>
       <%= render 'public/novels/list', novels: @favorite_novels %>
     </div>
   </div>
