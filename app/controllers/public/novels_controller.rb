@@ -9,8 +9,10 @@ class Public::NovelsController < ApplicationController
     @novel = Novel.new(novel_params)
     @novel.user_id = current_user.id # 投稿データにログイン中のユーザーのIDを持たせる
     if @novel.save
+      flash[:notice] = '小説の投稿に成功しました'
       redirect_to public_novel_path(@novel.id)
     else
+      flash.now[:alert] = '小説の投稿に失敗しました'
       render :new
     end
   end
@@ -32,8 +34,10 @@ class Public::NovelsController < ApplicationController
   def update
     @novel = Novel.find(params[:id])
     if @novel.update(novel_params)
+      flash[:notice] = '小説の編集に成功しました'
       redirect_to public_novel_path(@novel.id)
     else
+      flash.now[:alert] = '小説の編集に失敗しました'
       render :edit
     end
   end
