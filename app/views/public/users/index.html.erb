@@ -10,7 +10,7 @@
             <th>ユーザー名</th>
           </tr>
           <% @users.each do |user| %>
-            <tr>
+            <tr id="follow-form">
               <td>
                 <%= link_to public_user_path(user.id) do %>
                   <%= image_tag user.get_profile_image(100, 100) %>
@@ -21,17 +21,9 @@
                   <%= user.name %>
                 <% end %>
               </td>
-              <% unless current_user == user %>
-                <% if current_user.following?(user) %>
-                  <td>
-                    <%= link_to "フォロー外す", public_user_relationships_path(user), method: :delete, class: "btn btn-danger" %>
-                  </td>
-                <% else %>
-                  <td>
-                    <%= link_to "フォローする", public_user_relationships_path(user), method: :post, class: "btn btn-success" %>
-                  </td>
-                <% end %>
-              <% end %>
+              <td>
+                <%= render 'public/relationships/follow_btn', user: user %>
+              </td>
             </tr>
 
           <% end %>

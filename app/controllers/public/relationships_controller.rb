@@ -4,13 +4,11 @@ class Public::RelationshipsController < ApplicationController
   def create
     current_user.follow(params[:user_id])
     # "request.referer"は遷移前のURLを取得する際に使う
-    redirect_to request.referer
   end
 
   # フォロー外すとき
   def destroy
     current_user.unfollow(params[:user_id])
-    redirect_to request.referer
   end
 
   # フォロー一覧
