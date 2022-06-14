@@ -7,17 +7,13 @@
       <tr><td>自己紹介</td></tr>
       <tr><td><%= user.introduction %></td></tr>
       <tr>
-        <td>
-          <%= link_to public_user_followings_path(user) do %>
-            <%= user.followings.count %>フォロー
-          <% end %>
+        <td id="following_count_<%= user.id %>">
+          <%= link_to "#{ user.followings.count }フォロー", public_user_followings_path(user) %>
         </td>
       </tr>
       <tr>
-        <td>
-          <%= link_to public_user_followers_path(user) do %>
-            <%= user.followers.count %>フォロワー
-          <% end %>
+        <td id="follower_count_<%= user.id %>">
+          <%= link_to "#{ user.followers.count }フォロワー", public_user_followers_path(user) %>
         </td>
       </tr>
       <% if user == current_user %>
@@ -28,9 +24,9 @@
           <td><%= link_to "プロフィール編集", edit_public_user_path(user), class: "btn btn-success" %></td>
         </tr>
       <% end %>
-      <tr id="follow-form">
-        <td>
-        <%= render 'public/relationships/follow_btn', user: user %>
+      <tr>
+        <td id="follow_form_<%= user.id %>">
+          <%= render 'public/relationships/follow_btn', user: user %>
         </td>
       </tr>
     </table>
