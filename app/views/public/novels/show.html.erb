@@ -40,12 +40,7 @@
   <div class="row">
     <div class="col-8 offset-2">
       <table class="table table-borderless">
-        <%= form_with model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post, local: false do |f| %>
-          <tr>
-            <td><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", cols: 100 %></td>
-          </tr>
-          <tr><td><%= f.submit "コメント送信" %></td></tr>
-        <% end %>
+        <%= render 'public/novel_comments/form', novel: @novel, novel_comment: @novel_comment %>
       </table>
     </div>
     <div class="col-4 offset-4">
