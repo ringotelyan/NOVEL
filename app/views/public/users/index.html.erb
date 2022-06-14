@@ -21,7 +21,7 @@
                   <%= user.name %>
                 <% end %>
               </td>
-              <td>
+              <td id="follow_form_<%= user.id %>">
                 <%= render 'public/relationships/follow_btn', user: user %>
               </td>
             </tr>
