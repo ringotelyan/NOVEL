@@ -3,10 +3,11 @@
 class Public::SessionsController < Devise::SessionsController
   before_action :user_state, only: [:create]
 
-  def new_guest
+  def guest_sign_in
     user = User.guest
-    sign_in user #ユーザーをログインさせる
-    redirect_to public_novels_path, notice: 'ゲストユーザーとしてログインしました。'
+    sign_in user
+    flash[:notice] = 'ゲストユーザーとしてログインしました'
+    redirect_to public_novels_path
   end
 
   protected

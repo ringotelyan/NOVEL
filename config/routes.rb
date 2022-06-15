@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   }
   # deviseに新たにルーティングを追加（スコープを経由）（ゲストログイン機能）
   devise_scope :user do
-    post 'users/guest_sign_in', to: 'public/sessions#new_guest'
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
   # 管理者

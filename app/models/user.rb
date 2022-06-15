@@ -33,7 +33,7 @@ class User < ApplicationRecord
   # find_or_create_by!でゲストユーザーがなければ作成、あれば取り出す。
   # ゲストユーザーがないときに作成するユーザー情報を記述
   def self.guest
-    find_or_create_by!(email: 'aaa@aaa.com') do |user|
+    find_or_create_by!(name: 'ゲストユーザー', email: 'aaa@aaa.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = 'ゲストユーザー'
     end

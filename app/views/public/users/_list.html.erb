@@ -1,3 +1,4 @@
+
 <div class="col-3 mt-3">
   <h3>ユーザー<br>プロフィール</h3>
   <div>
@@ -17,12 +18,14 @@
         </td>
       </tr>
       <% if user == current_user %>
+      <% if user.name != "ゲストユーザー" %>
         <tr>
           <td><%= link_to "新規投稿はこちら", new_public_novel_path, class: "btn btn-primary" %></td>
         </tr>
         <tr>
           <td><%= link_to "プロフィール編集", edit_public_user_path(user), class: "btn btn-success" %></td>
         </tr>
+      <% end %>
       <% end %>
       <tr>
         <td id="follow_form_<%= user.id %>">
