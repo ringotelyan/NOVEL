@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # 顧客用
   # skipは不要なルーティングを削除
   # URL /users/sign_in ...
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     resources :novels, only: [:index, :show, :edit, :update, :destroy]
+    resources :genres, only: [:index, :show, :edit, :update, :destroy]
   end
 
   namespace :public, path: "" do

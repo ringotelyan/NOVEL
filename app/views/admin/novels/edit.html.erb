@@ -10,6 +10,10 @@
         <table class="table table-borderless">
           <tr><td><strong>タイトル</strong></td></tr>
           <tr><td><%= f.text_field :title, size: 85 %></td></tr>
+          <tr><td><strong>ジャンル</strong></td></tr>
+          <tr><td>
+            <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "--選択してください--") %>
+          </td></tr>
           <tr><td><strong>小説本文</strong></td></tr>
           <tr><td><%= f.text_area :body, rows: 10, cols: 90 %></td></tr>
           <tr><td><%= f.submit '変更を保存する' %></td></tr>

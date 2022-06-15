@@ -5,16 +5,23 @@ class Admin::NovelsController < ApplicationController
 
   def show
     @novel = Novel.find(params[:id])
+    @genre = @novel.genre_id
+    @user = @novel.user
   end
 
   def edit
     @novel = Novel.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
     @novel = Novel.find(params[:id])
-    @novel.update(novel_params)
-    redirect_to admin_novel_path(@novel)
+    if @novel.update(novel_params)
+      redirect_to admin_novel_path(@novel)
+    else
+      @genres = Genre.all
+      render :edit
+    end
   end
 
   def destroy
@@ -26,6 +33,6 @@ class Admin::NovelsController < ApplicationController
   private
 
   def novel_params
-    params.require(:novel).permit(:title, :body)
+    params.require(:novel).permit(:title, :body, :genre_id)
   end
 end
