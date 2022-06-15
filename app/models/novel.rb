@@ -4,6 +4,7 @@ class Novel < ApplicationRecord
   belongs_to :genre
   has_many :novel_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
 
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 2000, maximum: 3000 }

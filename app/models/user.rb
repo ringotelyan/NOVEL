@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :novels, dependent: :destroy
   has_many :novel_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_novels, through: :favorites, source: :novel
 
   # フォローした、されたの関係
   # 「reverse_of_relationships」は「relationships」とごっちゃになるため、わかりやすくするために命名
