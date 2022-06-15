@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   def get_profile_image(width, height)
     unless profile_image.attached?
-      file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
@@ -33,9 +33,8 @@ class User < ApplicationRecord
   # find_or_create_by!でゲストユーザーがなければ作成、あれば取り出す。
   # ゲストユーザーがないときに作成するユーザー情報を記述
   def self.guest
-    find_or_create_by!(email: 'aaa@aaa.com') do |user|
+    find_or_create_by!(name: 'ゲストユーザー', email: 'aaa@aaa.com') do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.password_confirmation = user.password
       user.name = 'ゲストユーザー'
     end
   end

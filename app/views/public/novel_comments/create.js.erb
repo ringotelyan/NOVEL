@@ -1,4 +1,3 @@
-$("#comment_count").html("コメント数: <%= @novel.novel_comments.count %>");
-//$("#comment_area").html("<%= j(render 'public/novel_comments/index', novel: @novel) %>");
-$("#comment_area").append("<%= j(render 'public/novel_comments/comment', novel_comment: @comment) %>");
+$("#comment_count").html("コメント件数: <%= @novel.novel_comments.count %>");
+$("#comment_area").append("<%= j(render 'public/novel_comments/comment', novel: @novel, novel_comment: @comment) %>");
 $("#novel_comment_comment").val("");

@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
+      <%= flash[:notice] %>
       <table class="table table-borderless">
         <tr><td><h3><%= @novel.title %></h3></td></tr>
         <tr><td>
@@ -39,21 +40,26 @@
   </div>
   <div class="row">
     <div class="col-8 offset-2">
-      <table class="table table-borderless">
-        <%= form_with model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post, local: false do |f| %>
+      <% if current_user.name != "ゲストユーザー" %>
+      <%= form_with(model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post, local: false) do |f| %>
+        <table class="table table-borderless">
+        <%#= render 'public/novel_comments/form', novel: @novel, novel_comment: @novel_comment %>
+
           <tr>
-            <td><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", cols: 100 %></td>
+            <td><%= f.text_area :comment, id: "novel_comment_comment", rows: '5', placeholder: "コメントをここに", cols: 100 %></td>
           </tr>
           <tr><td><%= f.submit "コメント送信" %></td></tr>
-        <% end %>
-      </table>
+
+      　</table>
+      <% end %>
+      <% end %>
     </div>
     <div class="col-4 offset-4">
       <table class="table table-borderless">
         <% if @novel.user == current_user %>
           <tr>
             <td><%= link_to "小説を編集する", edit_public_novel_path(@novel.id), class: "btn btn-success" %></td>
-            <td><%= button_to "小説を削除する", public_novel_path(@novel), method: :delete, class: "btn btn-danger" %></td>
+            <td><%= button_to "小説を削除する", public_novel_path(@novel), method: :delete, class: "btn btn-danger", data: { confirm: "本当に削除しますか？"} %></td>
           </tr>
         <% end %>
       </table>

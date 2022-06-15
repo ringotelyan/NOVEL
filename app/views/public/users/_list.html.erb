@@ -1,36 +1,35 @@
+
 <div class="col-3 mt-3">
   <h3>ユーザー<br>プロフィール</h3>
   <div>
     <table class="table">
       <tr><td><%= image_tag user.get_profile_image(100,100) %></td></tr>
       <tr><td><%= user.name %></td></tr>
-      <tr><td>自己紹介</td></tr>
-      <tr><td><%= user.introduction %></td></tr>
-      <tr>
-        <td>
-          <%= link_to public_user_followings_path(user) do %>
-            <%= user.followings.count %>フォロー
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= link_to public_user_followers_path(user) do %>
-            <%= user.followers.count %>フォロワー
-          <% end %>
-        </td>
-      </tr>
-      <% if user == current_user %>
+      <% if user.name != "ゲストユーザー" %>
+        <tr><td>自己紹介</td></tr>
+          <tr><td><%= user.introduction %></td></tr>
         <tr>
-          <td><%= link_to "新規投稿はこちら", new_public_novel_path, class: "btn btn-primary" %></td>
+          <td id="following_count_<%= user.id %>">
+            <%= link_to "#{ user.followings.count }フォロー", public_user_followings_path(user) %>
+          </td>
         </tr>
         <tr>
-          <td><%= link_to "プロフィール編集", edit_public_user_path(user), class: "btn btn-success" %></td>
+          <td id="follower_count_<%= user.id %>">
+            <%= link_to "#{ user.followers.count }フォロワー", public_user_followers_path(user) %>
+          </td>
         </tr>
+        <% if user == current_user %>
+          <tr>
+            <td><%= link_to "新規投稿はこちら", new_public_novel_path, class: "btn btn-primary" %></td>
+          </tr>
+          <tr>
+            <td><%= link_to "プロフィール編集", edit_public_user_path(user), class: "btn btn-success" %></td>
+          </tr>
+        <% end %>
       <% end %>
-      <tr id="follow-form">
-        <td>
-        <%= render 'public/relationships/follow_btn', user: user %>
+      <tr>
+        <td id="follow_form_<%= user.id %>">
+          <%= render 'public/relationships/follow_btn', user: user %>
         </td>
       </tr>
     </table>

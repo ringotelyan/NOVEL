@@ -8,8 +8,14 @@
     <div class="col-9 mt-3">
       <h4>投稿済みゴフノベル一覧</h4>
       <%= render 'public/novels/list', novels: @novels %>
+      <% if @user.name == "ゲストユーザー" %>
+        <p>ゲストユーザーはゴフノベルを投稿できません</p>
+      <% end %>
       <h4 class="mt-5">ブックマークしたゴフノベル一覧</h4>
       <%= render 'public/novels/list', novels: @favorite_novels %>
+      <% if @user.name == "ゲストユーザー" %>
+        <p>ゲストユーザーはブックマークをできません</p>
+      <% end %>
     </div>
   </div>
 </div>

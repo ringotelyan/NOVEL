@@ -10,21 +10,23 @@
             <th>ユーザー名</th>
           </tr>
           <% @users.each do |user| %>
-            <tr id="follow-form">
-              <td>
-                <%= link_to public_user_path(user.id) do %>
-                  <%= image_tag user.get_profile_image(100, 100) %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to public_user_path(user.id) do %>
-                  <%= user.name %>
-                <% end %>
-              </td>
-              <td>
-                <%= render 'public/relationships/follow_btn', user: user %>
-              </td>
-            </tr>
+            <% if user.name != "ゲストユーザー" %>
+              <tr id="follow-form">
+                <td>
+                  <%= link_to public_user_path(user.id) do %>
+                    <%= image_tag user.get_profile_image(100, 100) %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to public_user_path(user.id) do %>
+                    <%= user.name %>
+                  <% end %>
+                </td>
+                <td id="follow_form_<%= user.id %>">
+                  <%= render 'public/relationships/follow_btn', user: user %>
+                </td>
+              </tr>
+            <% end %>
 
           <% end %>
         </table>

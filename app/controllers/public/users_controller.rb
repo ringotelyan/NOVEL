@@ -1,5 +1,7 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: [:favorites]
+  before_action :ensure_guest_user, only: [:edit]
 
   def index
     @users = User.where(is_deleted: false)
@@ -48,6 +50,14 @@ class Public::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "ゲストユーザー"
+      flash[:notice] = "ゲストユーザーはプロフィール編集画面へ遷移できません"
+      redirect_to public_novels_path
+    end
   end
 
 end
