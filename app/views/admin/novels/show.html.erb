@@ -18,7 +18,7 @@
     <div class="col-8 offset-2">
       <table class="table">
         <tr>
-          <td><%= @novel.body %></td>
+          <td><%= safe_join(@novel.body.split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td>

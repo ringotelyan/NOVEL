@@ -14,7 +14,8 @@
             <%= @novel.genre.name %>
           <% end %>
         </td></tr>
-        <tr><td><%= @novel.body %></td></tr>
+        <!--以下の記述で、連続した改行・段落が可能-->
+        <tr><td><%= safe_join(@novel.body.split("\n"),tag(:br)) %></td></tr>
         <tr><td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td></tr>
       </table>
       <table class="table table-borderless">
