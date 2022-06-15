@@ -40,6 +40,7 @@
   </div>
   <div class="row">
     <div class="col-8 offset-2">
+      <% if current_user.name != "ゲストユーザー" %>
       <%= form_with(model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post, local: false) do |f| %>
         <table class="table table-borderless">
         <%#= render 'public/novel_comments/form', novel: @novel, novel_comment: @novel_comment %>
@@ -50,6 +51,7 @@
           <tr><td><%= f.submit "コメント送信" %></td></tr>
 
       　</table>
+      <% end %>
       <% end %>
     </div>
     <div class="col-4 offset-4">
