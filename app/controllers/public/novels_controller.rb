@@ -11,11 +11,11 @@ class Public::NovelsController < ApplicationController
   def create
     @novel = Novel.new(novel_params)
     @novel.user_id = current_user.id # 投稿データにログイン中のユーザーのIDを持たせる
-    @genres = Genre.all
     if @novel.save
       flash[:notice] = '小説の投稿に成功しました'
       redirect_to public_novel_path(@novel.id)
     else
+      @genres = Genre.all
       flash.now[:alert] = '小説の投稿に失敗しました'
       render :new
     end
@@ -38,11 +38,11 @@ class Public::NovelsController < ApplicationController
 
   def update
     @novel = Novel.find(params[:id])
-    @genres = Genre.all
     if @novel.update(novel_params)
       flash[:notice] = '小説の編集に成功しました'
       redirect_to public_novel_path(@novel.id)
     else
+      @genres = Genre.all
       flash.now[:alert] = '小説の編集に失敗しました'
       render :edit
     end
@@ -58,7 +58,7 @@ class Public::NovelsController < ApplicationController
   private
 
   def novel_params
-    params.require(:novel).permit(:title, :body)
+    params.require(:novel).permit(:title, :body, :genre_id)
   end
 
   def correct_user
