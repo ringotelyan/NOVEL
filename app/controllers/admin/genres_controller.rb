@@ -22,8 +22,8 @@ class Admin::GenresController < ApplicationController
   end
 
   def destroy
-    @novel = Novel.find(params[:id])
-    @novel.destroy
+    @genre = Genre.find(params[:id])
+    @genre.destroy
     redirect_to admin_genres_path
   end
 
