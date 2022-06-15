@@ -22,7 +22,11 @@ class Public::NovelsController < ApplicationController
   end
 
   def index
-    @novels = Novel.all
+    # @novels = Novel.all
+    @novels = Novel.includes(:favorited_users).
+      sort {|a,b|
+        b.favorited_users.size <=>
+        a.favorited_users.size}
     @user = current_user
   end
 
