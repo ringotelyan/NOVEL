@@ -4,13 +4,14 @@ class Public::NovelsController < ApplicationController
 
   def new
     @novel = Novel.new
-    @genre = Genre.all
+    @genres = Genre.all
   end
 
   # 投稿データの保存
   def create
     @novel = Novel.new(novel_params)
     @novel.user_id = current_user.id # 投稿データにログイン中のユーザーのIDを持たせる
+    @genres = Genre.all
     if @novel.save
       flash[:notice] = '小説の投稿に成功しました'
       redirect_to public_novel_path(@novel.id)
@@ -32,10 +33,12 @@ class Public::NovelsController < ApplicationController
 
   def edit
     @novel = Novel.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
     @novel = Novel.find(params[:id])
+    @genres = Genre.all
     if @novel.update(novel_params)
       flash[:notice] = '小説の編集に成功しました'
       redirect_to public_novel_path(@novel.id)
