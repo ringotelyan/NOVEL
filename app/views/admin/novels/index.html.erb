@@ -6,26 +6,7 @@
   </div>
   <div classs="row">
     <div class="col-8 offset-2">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>タイトル</th>
-            <th>作家名</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @novels.each do |novel| %>
-            <tr>
-              <td>
-                <%= link_to admin_novel_path(novel) do %>
-                  <%= novel.title %>
-                <% end %>
-              </td>
-              <td><%= novel.user.name %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render 'admin/nobels/list', novels: @novels %>
     </div>
   </div>
 </div>

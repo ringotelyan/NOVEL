@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # 顧客用
   # skipは不要なルーティングを削除
   # URL /users/sign_in ...
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     resources :novels, only: [:index, :show, :edit, :update, :destroy]
+    resources :genres, only: [:index, :show, :edit, :create, :update, :destroy]
   end
 
   namespace :public, path: "" do
@@ -46,6 +48,7 @@ Rails.application.routes.draw do
         get :favorites
       end
     end
+    resources :genres, only: [:index, :create, :show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -4,6 +4,7 @@ class Public::NovelsController < ApplicationController
 
   def new
     @novel = Novel.new
+    @genres = Genre.all
   end
 
   # 投稿データの保存
@@ -14,6 +15,7 @@ class Public::NovelsController < ApplicationController
       flash[:notice] = '小説の投稿に成功しました'
       redirect_to public_novel_path(@novel.id)
     else
+      @genres = Genre.all
       flash.now[:alert] = '小説の投稿に失敗しました'
       render :new
     end
@@ -27,10 +29,12 @@ class Public::NovelsController < ApplicationController
   def show
     @novel = Novel.find(params[:id])
     @novel_comment = NovelComment.new
+    @genre = @novel.genre_id
   end
 
   def edit
     @novel = Novel.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
@@ -39,6 +43,7 @@ class Public::NovelsController < ApplicationController
       flash[:notice] = '小説の編集に成功しました'
       redirect_to public_novel_path(@novel.id)
     else
+      @genres = Genre.all
       flash.now[:alert] = '小説の編集に失敗しました'
       render :edit
     end
@@ -54,7 +59,7 @@ class Public::NovelsController < ApplicationController
   private
 
   def novel_params
-    params.require(:novel).permit(:title, :body)
+    params.require(:novel).permit(:title, :body, :genre_id)
   end
 
   def correct_user

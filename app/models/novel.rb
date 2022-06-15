@@ -1,6 +1,7 @@
 class Novel < ApplicationRecord
 
   belongs_to :user
+  belongs_to :genre
   has_many :novel_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
