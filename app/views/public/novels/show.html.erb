@@ -21,6 +21,7 @@
         <tr id="novel_<%= @novel.id %>">
           <td id="novel_<%= @novel.id %>_btn"><%= render "public/favorites/btn", novel: @novel %></td>
           <td id="comment_count">コメント件数: <%= @novel.novel_comments.count %></td>
+          <td>閲覧数: <%= @novel.view_counts.count %></td>
         </tr>
       </table>
     </div>

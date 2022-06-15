@@ -34,6 +34,9 @@ class Public::NovelsController < ApplicationController
     @novel = Novel.find(params[:id])
     @novel_comment = NovelComment.new
     @genre = @novel.genre_id
+    unless ViewCount.find_by(user_id: current_user.id, novel_id: @novel.id)
+      current_user.view_counts.create(novel_id: @novel.id)
+    end
   end
 
   def edit
