@@ -1,4 +1,6 @@
 class Public::NovelsController < ApplicationController
+  before_action :correct_user, only: [:update, :edit]
+  before_action :ensure_guest_user, only: [:new]
 
   def new
     @novel = Novel.new
@@ -53,6 +55,20 @@ class Public::NovelsController < ApplicationController
 
   def novel_params
     params.require(:novel).permit(:title, :body)
+  end
+
+  def correct_user
+    @novel = Novel.find(params[:id])
+    @user = @novel.user
+    redirect_to (public_novels_path) unless @user == current_user
+  end
+
+  def ensure_guest_user
+    @user = current_user
+    if @user.name == "ゲストユーザー"
+      flash[:notice] = "ゲストユーザーは新規投稿画面へ遷移できません"
+      redirect_to public_novels_path
+    end
   end
 
 end
