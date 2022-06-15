@@ -4,6 +4,7 @@ class Public::NovelsController < ApplicationController
 
   def new
     @novel = Novel.new
+    @genre = Genre.all
   end
 
   # 投稿データの保存
