@@ -11,24 +11,17 @@
           </tr>
         </table>
       <% end %>
-      <table class="table">
-         <thead>
-           <tr>
-             <th>ジャンル名</th>
-             <th></th>
-           </tr>
-           <% @genres.each do |genre| %>
-           <tr>
-             <td>
-               <%= link_to public_genre_path(genre) do %>
-                 <%= genre.name %>
-               <% end %>
-              </td>
-             <td><%= link_to "ジャンル名を編集する", edit_public_genre_path(genre.id), class:"btn btn-success" %></td>
-           <% end %>
-           </tr>
-         </thead>
-      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 offset-3 mt-3">
+      <div class="row row-cols-3 row-cols-md-2 g-4">
+        <% @genres.each do |genre| %>
+          <%= link_to public_genre_path(genre) do %>
+            <%= genre.name %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
