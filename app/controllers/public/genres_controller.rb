@@ -6,6 +6,11 @@ class Public::GenresController < ApplicationController
     @genres = Genre.all
   end
 
+  def show
+    @genre = Genre.find(params[:id])
+    @novels = @genre.novels
+  end
+
   def edit
     @genre = Genre.find(params[:id])
   end
