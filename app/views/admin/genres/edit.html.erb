@@ -13,6 +13,7 @@
           </tr>
         </table>
       <% end %>
+      <%= render 'admin/novels/list', novels: @novels%>
       <%= link_to "ジャンルを削除する", admin_genre_path(@genre), method: :delete, class:"btn btn-danger", data: { confirm: "本当に削除しますか？"} %>
     </div>
   </div>
