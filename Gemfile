@@ -60,3 +60,5 @@ gem 'devise'
 gem 'rails-i18n' # バリデーションのエラーメッセージを日本語化
 
 gem 'pry-rails'
+
+gem 'devise-i18n'
