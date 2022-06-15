@@ -4,7 +4,7 @@ class Novel < ApplicationRecord
   belongs_to :genre
   has_many :novel_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  # favoritesテーブルを通ってuserモデルのデータを
+  # favoritesテーブルを通ってuserモデルのデータを持ってくる
   has_many :favorited_users, through: :favorites, source: :user
 
   validates :title, presence: true
