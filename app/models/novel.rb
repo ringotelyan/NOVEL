@@ -17,17 +17,7 @@ class Novel < ApplicationRecord
 
   # 検索方法分岐
   def self.looks(search, word)
-    if search == "perfect_match"
-      @novel = Novel.where("title LIKE? or body LIKE?", "#{word}", "#{word}")
-    elsif search == "forward_match"
-      @novel = Novel.where("title LIKE? or body LIKE?", "#{word}%", "#{word}%")
-    elsif search == "backward_match"
-      @novel = Novel.where("title LIKE or body LIKE?", "%#{word}", "%#{word}")
-    elsif search == "partial_match"
       @novel = Novel.where("title LIKE? or body LIKE?", "%#{word}%", "%#{word}%")
-    else
-      @novel = Novel.all
-    end
   end
 
 
