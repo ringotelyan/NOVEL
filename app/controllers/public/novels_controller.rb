@@ -22,7 +22,6 @@ class Public::NovelsController < ApplicationController
   end
 
   def index
-    # @novels = Novel.all.page(params[:page]).per(10)
     # @novels = Novel.includes(:favorited_users)
     novels = Novel.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
     @novels = Kaminari.paginate_array(novels).page(params[:page]).per(10)
