@@ -6,7 +6,7 @@
             <span style="text-align: left; font-size: 20px;"><%= current_user.name %></span>
             <span style="text-align: right; font-sizr: 20px;"><%= @user.name %></span>
           </div>
-          <ul id="message">
+          <ul id="message", style="list-style: none;">
         <% @chats.each do |chat| %>
           <% if chat.user_id == current_user.id %>
             <li style="text-align: left;"><%= chat.message %></li>
