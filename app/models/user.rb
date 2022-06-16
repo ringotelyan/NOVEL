@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :novel_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :view_counts, dependent: :destroy
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
 
   # フォローした、されたの関係
   # 「reverse_of_relationships」は「relationships」とごっちゃになるため、わかりやすくするために命名
@@ -55,17 +57,7 @@ class User < ApplicationRecord
 
   # 検索方法分岐
   def self.looks(search, word)
-    if search == "perfect_match"
-      @user = User.where("name LIKE?", "#{word}")
-    elsif search == "forward_match"
-      @user = User.where("name LIKE?", "#{word}%")
-    elsif search == "backward_match"
-      @user =User.where("name LIKE", "%#{word}")
-    elsif search == "partial_match"
       @user = User.where("name LIKE?", "%#{word}%")
-    else
-      @user = User.all
-    end
   end
 
   # ログイン時に退会済みのユーザーが同じアカウントでログインできないように制約

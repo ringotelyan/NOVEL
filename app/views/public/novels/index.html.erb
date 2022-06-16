@@ -5,6 +5,7 @@
       <%= flash[:notice] %>
       <h4>ゴフノベル一覧</h4>
       <%= render 'list', novels: @novels %>
+      <%= paginate @novels %>
     </div>
   </div>
 </div>

@@ -22,11 +22,13 @@ class Public::NovelsController < ApplicationController
   end
 
   def index
-    # @novels = Novel.all
-    @novels = Novel.includes(:favorited_users).
-      sort {|a,b|
-        b.favorited_users.size <=>
-        a.favorited_users.size}
+    # @novels = Novel.includes(:favorited_users)
+    novels = Novel.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    @novels = Kaminari.paginate_array(novels).page(params[:page]).per(10)
+   
+      #sort {|a,b|
+        #b.favorited_users.size <=>
+        #a.favorited_users.size}
     @user = current_user
   end
 

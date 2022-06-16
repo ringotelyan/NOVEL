@@ -2,7 +2,7 @@
   <div class="row">
     <%= render 'list', user: @user %>
 
-    <div class="col-9">
+    <div class="col-md-9 mt-3">
       <h2>ユーザー一覧</h2>
         <table class="table">
           <tr>
@@ -30,6 +30,7 @@
 
           <% end %>
         </table>
+        <%= paginate @users %>
     </div>
   </div>
 </div>
