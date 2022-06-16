@@ -9,24 +9,26 @@
         </tr>
       </thead>
       <% novels.each do |novel| %>
-        <tbody>
-          <tr id="novel_<%= novel.id %>">
-            <td>
-              <%= link_to public_novel_path(novel.id) do %>
-                <%= novel.title %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to public_user_path(novel.user) do %>
-                <%= novel.user.name %>
-              <% end %>
-            </td>
-            <td id="novel_<%= novel.id %>_btn"><%= render "public/favorites/btn", novel: novel %></td>
-            <td>
-              <%= link_to "#{novel.novel_comments.count} コメント", public_novel_path(novel.id) %><br>
-              閲覧数: <%= novel.view_counts.count %>
-            </td>
-          </tr>
-        </tbody>
+        <% if novel.user.is_deleted == false %>
+          <tbody>
+            <tr id="novel_<%= novel.id %>">
+              <td>
+                <%= link_to public_novel_path(novel.id) do %>
+                  <%= novel.title %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to public_user_path(novel.user) do %>
+                  <%= novel.user.name %>
+                <% end %>
+              </td>
+              <td id="novel_<%= novel.id %>_btn"><%= render "public/favorites/btn", novel: novel %></td>
+              <td>
+                <%= link_to "#{novel.novel_comments.count} コメント", public_novel_path(novel.id) %><br>
+                閲覧数: <%= novel.view_counts.count %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
       <% end %>
     </table>
