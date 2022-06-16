@@ -1,13 +1,12 @@
 
-<div class="col-3 mt-3">
+<div class="col-md-3 mt-3">
   <h3>ユーザー<br>プロフィール</h3>
   <div>
-    <table class="table">
+    <table class="table table-borderless">
       <tr><td><%= image_tag user.get_profile_image(100,100) %></td></tr>
       <tr><td><%= user.name %></td></tr>
       <% if user.name != "ゲストユーザー" %>
-        <tr><td>自己紹介</td></tr>
-          <tr><td><%= user.introduction %></td></tr>
+        <tr><td><%= user.introduction %></td></tr>
         <tr>
           <td id="following_count_<%= user.id %>">
             <%= link_to "#{ user.followings.count }フォロー", public_user_followings_path(user) %>
