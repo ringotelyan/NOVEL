@@ -29,6 +29,7 @@
         <table class="table">
           <tbody>
             <% @novels.each do |novel| %>
+            <% if novel.user.is_deleted == false %>
               <tr>
                 <td>
                   <%= link_to public_novel_path(novel) do %>
@@ -41,7 +42,8 @@
                   <% end %>
                 </td>
               </tr>
-          <% end %>
+            <% end %>
+            <% end %>
           </tbody>
         </table>
       <% end %>
