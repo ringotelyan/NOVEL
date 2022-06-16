@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <%= render 'public/users/list', user: @user %>
-    <div class="col-9 mt-3">
+    <div class="col-md-9 mt-3">
       <%= flash[:notice] %>
       <h4>ゴフノベル一覧</h4>
       <%= render 'list', novels: @novels %>
