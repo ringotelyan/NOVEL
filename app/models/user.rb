@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :novel_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :view_counts, dependent: :destroy
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
 
   # フォローした、されたの関係
   # 「reverse_of_relationships」は「relationships」とごっちゃになるため、わかりやすくするために命名
