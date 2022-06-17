@@ -2,15 +2,22 @@
   <div class="row">
     <div class="col-md-6 offset-3">
       <h4 class="text-success mt-5"><strong><%= @user.name %></strong>さんとのチャットルーム</h4>
+
+        <div class="chat">
         <ul id="message", style="list-style: none;", class="mt-5">
           <% @chats.each do |chat| %>
             <% if chat.user_id == current_user.id %>
+              <div class="comment">
               <li style="text-align: right;"><%= chat.message %></li>
+              </div>
             <% else %>
+              <div class="comment">
               <li style="text-align: left;"><%= chat.message %></li>
+              </div>
             <% end %>
           <% end %>
         </ul>
+        </div>
 
       <div class="row justify-content-end">
       <%= form_with model: @chat, url: public_chats_path(@chat), method: :post, data: {remote: true} do |f| %>

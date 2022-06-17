@@ -1,0 +1,34 @@
+        /*<div class="chat">*/
+        /*<ul id="message", style="list-style: none;", class="mt-5">*/
+        /*  <% @chats.each do |chat| %>*/
+        /*    <% if chat.user_id == current_user.id %>*/
+        /*      <div class="comment">*/
+        /*      <li style="text-align: right;"><%= chat.message %></li>*/
+        /*      </div>*/
+        /*    <% else %>*/
+        /*      <div class="comment">*/
+        /*      <li style="text-align: left;"><%= chat.message %></li>*/
+        /*      </div>*/
+        /*    <% end %>*/
+        /*  <% end %>*/
+        /*</ul>*/
+        /*</div>*/
+
+.chat {
+  min-width: 500px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  overflow: hidden;
+  background: rgb(230,230,230);
+}
+
+.comment{
+    position:relative;
+    max-width:200px;
+    background:#fff;
+    padding:8px;
+    margin:0 8px 0 8px;
+    border:solid 1px rgb(150,150,150);
+    border-radius:8px;
+}
