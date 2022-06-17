@@ -1,19 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 offset-2">
-      <h2><%= @user.name %></h2>
-      <div class="message table">
-            <span style="text-align: right; font-size: 20px;"><%= current_user.name %></span>
-            <span style="text-align: left; font-sizr: 20px;"><%= @user.name %></span>
-          </div>
-          <ul id="message", style="list-style: none;">
-        <% @chats.each do |chat| %>
-          <% if chat.user_id == current_user.id %>
-            <li style="text-align: right;"><%= chat.message %></li>
-          <% else %>
-            <li style="text-align: left;"><%= chat.message %></li>
+    <div class="col-md-6 offset-3">
+      <h4 class="text-success mt-5"><strong><%= @user.name %></strong>さんとのチャットルーム</h4>
+        <ul id="message", style="list-style: none;", class="mt-5">
+          <% @chats.each do |chat| %>
+            <% if chat.user_id == current_user.id %>
+              <li style="text-align: right;"><%= chat.message %></li>
+            <% else %>
+              <li style="text-align: left;"><%= chat.message %></li>
+            <% end %>
           <% end %>
-        <% end %>
         </ul>
 
       <div class="row justify-content-end">
