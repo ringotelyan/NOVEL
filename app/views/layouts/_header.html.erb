@@ -14,45 +14,45 @@
               <%= link_to 'マイページ', public_user_path(current_user.id), class: 'nav-link text-success' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ユーザー一覧", public_users_path, class: 'nav-link text-dark' %>
+              <%= link_to "ユーザー一覧", public_users_path, class: 'nav-link text-success' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ゴフノベル一覧", public_novels_path, class: 'nav-link text-dark' %>
+              <%= link_to "ゴフノベル一覧", public_novels_path, class: 'nav-link text-success' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ジャンル一覧", public_genres_path, class: 'nav-link text-dark' %>
+              <%= link_to "ジャンル一覧", public_genres_path, class: 'nav-link text-success' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-success' %>
             </li>
             <li class="nav-item">
               <%= render 'public/searches/search' %>
             </li>
           <% elsif admin_signed_in? %>
             <li class="nav-item">
-              <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark' %>
+              <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-success' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ゴフノベル一覧", admin_novels_path, class: 'nav-link text-dark' %>
+              <%= link_to "ゴフノベル一覧", admin_novels_path, class: 'nav-link text-success' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-dark' %>
+              <%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-success' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark'%>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-success'%>
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to "ホーム", public_path, class: 'nav-link text-dark' %>
+              <%= link_to "ホーム", public_path, class: 'nav-link text-success' %>
             </li>
             <li class="nav-item">
-              <%= link_to "5HUNOVELとは", public_about_path, class: 'nav-link text-dark' %>
+              <%= link_to "5HUNOVELとは", public_about_path, class: 'nav-link text-success' %>
             </li>
             <li class="nav-item">
-              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
+              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-success' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-success' %>
             </li>
           <% end %>
         </ul>
