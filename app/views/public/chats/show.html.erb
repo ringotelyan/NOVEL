@@ -1,23 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-3">
-      <h4 class="text-success mt-5"><strong><%= @user.name %></strong>さんとのチャットルーム</h4>
+      <h4 class="text-success mt-5"><span style="background-color: #ccffcc;"><strong><%= @user.name %></strong></span>さんとのチャットルーム</h4>
 
-        <div class="chat">
         <ul id="message", style="list-style: none;", class="mt-5">
           <% @chats.each do |chat| %>
             <% if chat.user_id == current_user.id %>
-              <div>
-              <li style="text-align: right; background-color: rgba(153, 204, 0, 0.3);"><%= chat.message %></li>
-              </div>
+              <li style="text-align: right; background-color: #90ee90;"><%= chat.message %></li>
             <% else %>
-              <div>
-              <li style="text-align: left;", class="comment2"><%= chat.message %></li>
-              </div>
+              <li style="text-align: left; background-color: #ccffcc;"><%= chat.message %></li>
             <% end %>
           <% end %>
         </ul>
-        </div>
 
       <div class="row justify-content-end">
       <%= form_with model: @chat, url: public_chats_path(@chat), method: :post, data: {remote: true} do |f| %>
