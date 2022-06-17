@@ -1,7 +1,7 @@
 .comment1{
     position:relative;
     max-width:200px;
-    background:#fff;
+    background:#32cd32;
     padding:8px;
     margin:0 8px 0 8px;
     border:solid 1px rgb(150,150,150);
@@ -11,7 +11,7 @@
 .comment2{
     position:relative;
     max-width:200px;
-    background:#fff;
+    background:#adff2f;
     padding:8px;
     margin:0 8px 0 8px;
     border:solid 1px rgb(150,150,150);
