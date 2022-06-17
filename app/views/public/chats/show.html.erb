@@ -16,12 +16,13 @@
         <% end %>
         </ul>
 
-
+      <div class="row justify-content-end">
       <%= form_with model: @chat, url: public_chats_path(@chat), method: :post, data: {remote: true} do |f| %>
+        <%= f.submit "送信", class:"btn btn-success chat-btn" %>
         <%= f.text_field :message %>
         <%= f.hidden_field :room_id %>
-        <%= f.submit "メッセージ送信", class:"btn btn-success chat-btn" %>
       <% end %>
+      </div>
 
     </div>
   </div>
