@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <%= render 'public/users/list', user: @user %>
+    <%= render 'public/users/list', user: current_user %>
     <div class="col-md-9 mt-3">
       <%= flash[:notice] %>
       <h4>ゴフノベル一覧</h4>

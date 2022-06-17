@@ -5,6 +5,7 @@
     <table class="table table-borderless">
       <tr><td><%= image_tag user.get_profile_image(100,100) %></td></tr>
       <tr><td><%= user.name %></td></tr>
+      <% if user.is_deleted == false %>
       <% if user.name != "ゲストユーザー" %>
         <tr><td><%= user.introduction %></td></tr>
         <tr>
@@ -36,6 +37,9 @@
           <%= render 'public/relationships/follow_btn', user: user %>
         </td>
       </tr>
+      <% else %>
+        <tr><td>退会したユーザーです</td></tr>
+      <% end %>
     </table>
   </div>
 </div>

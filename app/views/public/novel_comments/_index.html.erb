@@ -1,3 +1,5 @@
           <% novel.novel_comments.each do |novel_comment| %>
+          <% if novel_comment.user.is_deleted == false%>
             <%= render "public/novel_comments/comment.html.erb", novel_comment: novel_comment%>
+          <% end %>
           <% end %>
