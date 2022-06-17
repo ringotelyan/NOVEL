@@ -9,7 +9,6 @@
         </tr>
       </thead>
       <% novels.each do |novel| %>
-        <% if novel.user.is_deleted == false %>
           <tbody>
             <tr id="novel_<%= novel.id %>">
               <td>
@@ -29,6 +28,5 @@
               </td>
             </tr>
           </tbody>
-        <% end %>
       <% end %>
     </table>
