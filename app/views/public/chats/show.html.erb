@@ -7,11 +7,11 @@
         <ul id="message", style="list-style: none;", class="mt-5">
           <% @chats.each do |chat| %>
             <% if chat.user_id == current_user.id %>
-              <div class="comment">
-              <li style="text-align: right;"><%= chat.message %></li>
+              <div>
+              <li style="text-align: right;", class="comment1"><%= chat.message %></li>
               </div>
             <% else %>
-              <div class="comment">
+              <div class="comment2">
               <li style="text-align: left;"><%= chat.message %></li>
               </div>
             <% end %>
