@@ -25,10 +25,8 @@
         </tr>
         <tr>
           <td>
-            <%= link_to "内容を編集する", edit_admin_novel_path(@novel), class: "btn btn-success" %>
-          </td>
-          <td>
-            <%= link_to "小説を削除する", admin_novel_path, method: :delete, class: "btn btn-danger", data: { confirm: "本当に削除しますか？"} %>
+            <%= link_to "内容を編集する", edit_admin_novel_path(@novel), class: "btn btn-success ml-2 mr-5" %>
+            <%= link_to "小説を削除する", admin_novel_path, method: :delete, class: "btn btn-danger ml-5", data: { confirm: "本当に削除しますか？"} %>
           </td>
         </tr>
       </table>

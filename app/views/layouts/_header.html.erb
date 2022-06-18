@@ -45,25 +45,25 @@
             </li>
           <% elsif admin_signed_in? %>
             <li class="nav-item">
-              <%= link_to public_users_path, class: 'nav-link text-success' do %>
+              <%= link_to admin_users_path, class: 'nav-link text-success' do %>
                 <i class="fas fa-user"></i>
                 会員一覧
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to public_novels_path, class: 'nav-link text-success' do %>
+              <%= link_to admin_novels_path, class: 'nav-link text-success' do %>
                 <i class="fas fa-book"></i>
                 ゴフノベル一覧
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to public_genres_path, class: 'nav-link text-success' do %>
+              <%= link_to admin_genres_path, class: 'nav-link text-success' do %>
                 <i class="fas fa-link"></i>
                 ジャンル一覧
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-success' do %>
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-success' do %>
                 <i class="fas fa-sign-out-alt"></i>
                 ログアウト
               <% end %>

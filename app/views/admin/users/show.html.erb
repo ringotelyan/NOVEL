@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-md-8 offset-2 mt-3">
       <h4><%= @user.name %>さんのプロフィール詳細</h4>
-      <p><%= image_tag @user.get_profile_image(50, 50) %></p>
+      <p><%= image_tag @user.get_profile_image(100, 100) %></p>
     </div>
   </div>
   <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-md-8 offset-2">
       <table class="table table-borderless">
         <tr>
           <td>会員ID</td>
