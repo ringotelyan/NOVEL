@@ -12,10 +12,12 @@ class Novel < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 2000, maximum: 3000 }
 
+  # 退会していない人のいいねだけを抽出するメソッド
   def active_favorites
     favorites.joins(:user).where(user:{ is_deleted: false })
   end
 
+  # 退会していない人のコメントだけを抽出するメソッド
   def active_comments
     novel_comments.joins(:user).where(user:{ is_deleted: false })
   end
