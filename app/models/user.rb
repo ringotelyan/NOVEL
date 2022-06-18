@@ -20,6 +20,8 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  scope :deleted, -> { where(is_deleted: false) }
+
   has_one_attached :profile_image
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }

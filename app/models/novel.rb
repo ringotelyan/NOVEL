@@ -7,7 +7,6 @@ class Novel < ApplicationRecord
   # favoritesテーブルを通ってuserモデルのデータを持ってくる
   has_many :favorited_users, through: :favorites, source: :user
   has_many :view_counts, dependent: :destroy
-  
 
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 2000, maximum: 3000 }
