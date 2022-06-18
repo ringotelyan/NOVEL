@@ -1,6 +1,6 @@
-
-    <table class="table table-borderless">
-      <% novels.each do |novel| %>
+  <table class="table table-borderless">
+    <% novels.each do |novel| %>
+      <% if novel.user.is_deleted == false %>
           <tbody>
             <tr id="novel_<%= novel.id %>">
               <td>
@@ -21,4 +21,5 @@
             </tr>
           </tbody>
       <% end %>
-    </table>
+    <% end %>
+  </table>

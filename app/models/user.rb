@@ -57,6 +57,14 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  # def active_followings
+  #   followings.where(is_deleted: false)
+  # end
+
+  # def active_followers
+  #   followers.where(is_deleted: false)
+  # end
+
   # 検索方法分岐
   def self.looks(search, word)
       @user = User.where("name LIKE?", "%#{word}%")
