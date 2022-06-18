@@ -16,6 +16,10 @@ class Novel < ApplicationRecord
     favorites.joins(:user).where(user:{ is_deleted: false })
   end
 
+  def active_comments
+    novel_comments.joins(:user).where(user:{ is_deleted: false })
+  end
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
