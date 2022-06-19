@@ -7,13 +7,10 @@
           <table class="table table-borderless">
           <% @chats.each do |chat| %>
             <% if chat.user_id == current_user.id %>
-            <tr><td></td><td>
+
               <li style="text-align: right; background-color: #90ee90;"><%= chat.message %></li>
-            </td></tr>
             <% else %>
-            <tr><td>
               <li style="text-align: left; background-color: #ccffcc;"><%= chat.message %></li>
-            </td><td></td></tr>
             <% end %>
           <% end %>
           </table>

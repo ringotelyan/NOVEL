@@ -1,6 +1,6 @@
 
 $("#follow_form_<%= @user.id %>").html("<%= j(render"public/relationships/follow_btn", user: @user) %>");
-$("#following_count_<%= @user.id %>").html('<%= link_to "#{ @user.followings.count }フォロー", public_user_followings_path(@user) %>');
-$("#follower_count_<%= @user.id %>").html('<%= link_to "#{ @user.followers.count }フォロワー", public_user_followers_path(@user) %>');
-$("#following_count_<%= current_user.id %>").html('<%= link_to "#{ current_user.followings.count }フォロー", public_user_followings_path(current_user) %>');
-$("#follower_count_<%= current_user.id %>").html('<%= link_to "#{ current_user.followers.count }フォロワー", public_user_followers_path(current_user) %>');
+$("#following_count_<%= @user.id %>").html('<%= link_to "#{ @user.active_followings.count }フォロー", public_user_followings_path(@user) %>');
+$("#follower_count_<%= @user.id %>").html('<%= link_to "#{ @user.active_followers.count }フォロワー", public_user_followers_path(@user) %>');
+$("#following_count_<%= current_user.id %>").html('<%= link_to "#{ current_user.active_followings.count }フォロー", public_user_followings_path(current_user) %>');
+$("#follower_count_<%= current_user.id %>").html('<%= link_to "#{ current_user.active_followers.count }フォロワー", public_user_followers_path(current_user) %>');
