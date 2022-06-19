@@ -1,26 +1,28 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 offset-2 mt-5">
-      <%= flash.now[:alert] %>
-      <h3>ゴフノベル投稿フォーム</h3>
-      <%= render 'error', novel: @novel %>
-      <%= form_with model: @novel, url: public_novels_path, method: :post do |f| %>
-        <table class="table table-borderless">
-          <tr><td><strong>タイトル</strong></td></tr>
-          <tr><td><%= f.text_field :title, size: 85 %></td></tr>
-          <tr><td><strong>ジャンル</strong></td></tr>
-          <tr><td>
-            <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "--選択してください--") %>
-          </td></tr>
-          <tr><td>
-            <%= link_to "ジャンルを新しく追加したい場合はこちらで追加してください", public_genres_path, class:"text text-secondary" %><br>
-            <p class="text-danger">※入力したデータは保存されませんのでご注意ください。</p>
-          </td></tr>
-          <tr><td><strong>小説本文</strong></td></tr>
-          <tr><td><%= f.text_area :body, rows: 10, cols: 90 %></td></tr>
-          <tr><td><%= f.submit '投稿する' %></td></tr>
-        </table>
-      <% end %>
+    <div class="col-8 offset-2 mt-3">
+      <div class="index-wrapped">
+        <%= flash.now[:alert] %>
+        <h4 style="background-color: #99ff99;", class="text-white pl-5">ゴフノベル投稿フォーム</h4>
+        <%= render 'error', novel: @novel %>
+        <%= form_with model: @novel, url: public_novels_path, method: :post do |f| %>
+          <table class="table table-borderless">
+            <tr><td><strong>タイトル</strong></td></tr>
+            <tr><td><%= f.text_field :title, size: 85 %></td></tr>
+            <tr><td><strong>ジャンル</strong></td></tr>
+            <tr><td>
+              <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "--選択してください--") %>
+            </td></tr>
+            <tr><td>
+              <%= link_to "ジャンルを新しく追加したい場合はこちらで追加してください", public_genres_path, class:"text text-secondary" %><br>
+              <p class="text-danger">※入力したデータは保存されませんのでご注意ください。</p>
+            </td></tr>
+            <tr><td><strong>小説本文</strong></td></tr>
+            <tr><td><%= f.text_area :body, rows: 10, cols: 90 %></td></tr>
+            <tr><td><center><%= f.submit '投稿する', class:"btn btn-lg btn-success" %></center></td></tr>
+          </table>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

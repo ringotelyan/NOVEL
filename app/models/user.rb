@@ -20,6 +20,8 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  scope :deleted, -> { where(is_deleted: false) }
+
   has_one_attached :profile_image
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
@@ -53,6 +55,18 @@ class User < ApplicationRecord
   # フォローしているか判定
   def following?(user)
     followings.include?(user)
+  end
+
+  def active_followings
+    # is_deletedがfalseの人のidだけを取って来る処理
+    # selectメソッドは条件を指定してその条件を満たすものだけを抜き出す
+    # {unless~~}は~~がfalseの時だけidを返すようになっている
+    followings.select {|following|following unless following.is_deleted}
+    # followings.where(is_deleted: false)
+  end
+
+  def active_followers
+    followers.select {|follower|follower unless follower.is_deleted}
   end
 
   # 検索方法分岐

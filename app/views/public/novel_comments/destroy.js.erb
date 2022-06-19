@@ -1,2 +1,2 @@
-$("#comment_count").html("コメント数: <%= @novel.novel_comments.count %>");
+$("#comment_count").html("コメント数: <%= @novel.active_comments.count %>");
 $("#comment-<%=@comment.id%>").remove();

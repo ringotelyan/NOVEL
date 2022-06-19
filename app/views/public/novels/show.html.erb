@@ -1,19 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8 offset-2 mt-3">
       <%= flash[:notice] %>
+      <div class="index-wrapped">
       <table class="table table-borderless">
-        <tr><td><h3><%= @novel.title %></h3></td></tr>
-        <tr><td>
-          <%= link_to public_user_path(@novel.user), class:"text-secondary" do %>
+        <tr><td><h3><center><%= @novel.title %></center></h3></td></tr>
+        <tr><td><center>
+          <%= link_to public_user_path(@novel.user), class:"text-success" do %>
             <%= @novel.user.name %>
           <% end %>
-        </td></tr>
-        <tr><td>ジャンル:
-          <%= link_to public_genre_path(@genre) do %>
+        </center></td></tr>
+        <tr><td><center>ジャンル:
+          <%= link_to public_genre_path(@genre), class:"text-info" do %>
             <%= @novel.genre.name %>
           <% end %>
-        </td></tr>
+        </center></td></tr>
         <!--以下の記述で、連続した改行・段落が可能-->
         <tr><td><%= safe_join(@novel.body.split("\n"),tag(:br)) %></td></tr>
         <tr><td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td></tr>
@@ -22,25 +23,18 @@
         <tr id="novel_<%= @novel.id %>">
           <td id="novel_<%= @novel.id %>_btn"><%= render "public/favorites/btn", novel: @novel %></td>
           <td id="comment_count">
-            コメント件数: <%= @novel.novel_comments.count %>
+            コメント件数: <%= @novel.active_comments.count %>
           </td>
           <td>閲覧数: <%= @novel.view_counts.count %></td>
         </tr>
       </table>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8 offset-2 mt-5">
       <table class="table table-borderless novel_comments">
-        <thead>
-          <tr>
-            <th></th>
-            <th>ユーザー名</th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
+        <h6 class="text-info pl-5", style="background: #e6ffe9;">コメント</h6>
         <tbody id="comment_area">
           <%= render 'public/novel_comments/index', novel: @novel %>
         </tbody>
@@ -57,7 +51,7 @@
           <tr>
             <td><%= f.text_area :comment, id: "novel_comment_comment", rows: '5', placeholder: "コメントをここに", cols: 100 %></td>
           </tr>
-          <tr><td><%= f.submit "コメント送信" %></td></tr>
+          <tr><td style="text-align: right;"><%= f.submit "コメント送信", class:"btn btn-sm btn-outline-info" %></td></tr>
 
       　</table>
       <% end %>

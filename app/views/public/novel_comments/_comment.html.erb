@@ -1,11 +1,11 @@
 <tr id="comment-<%=novel_comment.id%>">
-  <td><%= image_tag novel_comment.user.get_profile_image(100, 100) %></td>
-  <td><%= novel_comment.user.name %></td>
-  <td><%= novel_comment.comment %></td>
-  <td><%= novel_comment.created_at.strftime('%Y/%m/%d') %></td>
+  <td width="10%"><%= image_tag novel_comment.user.get_profile_image(50, 50) %></td>
+  <td width="15%"><%= novel_comment.user.name %></td>
+  <td width="50%"><%= novel_comment.comment %></td>
+  <td width="15%"><%= novel_comment.created_at.strftime('%Y/%m/%d') %></td>
   <% if novel_comment.user == current_user %>
     <td>
-      <%= link_to "コメントを削除する", public_novel_novel_comment_path(novel_comment.novel, novel_comment), method: :delete, remote: true, class: "btn btn-danger" %>
+      <%= link_to "削除", public_novel_novel_comment_path(novel_comment.novel, novel_comment), method: :delete, remote: true, class: "text-danger" %>
     </td>
   <% end %>
 </tr>

@@ -1,22 +1,22 @@
 <div class="container">
   <div class="row">
     <div class="col-10 offset-1 mt-5">
-      <h2><center>退会お手続き</center></h2>
-      <p class="mt-5">
+        <div class="unsubscribe-wrapped">
+        <h2 style="background-color: #ff666666;"><center>退会お手続き</center></h2>
+        <p class="mt-5">
+          <center>
+            退会手続きをされますと、全てのサービスがご利用いただけなくなります。<br>
+            再度ご利用いただく場合には、新規登録のお手続きが必要になります。<br>
+
+
+            <strong>本当に退会してよろしいですか？</strong>
+          </center>
+        </p>
         <center>
-          退会手続きをされますと、全てのサービスがご利用いただけなくなります。<br>
-          再度ご利用いただく場合には、新規登録のお手続きが必要になります。<br>
-          <div class="text-danger">また、退会後は投稿した小説や、コメント、ブックマークは残りますのでご注意ください。<br>
-          <%= link_to "投稿やブックマークを削除する", public_user_path(current_user), class: "text-secondary" %>
-          </div><br>
-          
-          <strong>本当に退会してよろしいですか？</strong>
+        <%= link_to "退会する", public_users_withdraw_path, method: :patch, class: "btn btn-danger mr-5 mt-5", data: { confirm: "本当に退会しますか？"} %>
+        <%= link_to "退会しない", public_users_path(current_user), class: "btn btn-outline-danger ml-5 mt-5" %>
         </center>
-      </p>
-      <center>
-      <%= link_to "退会する", public_users_withdraw_path, method: :patch, class: "btn btn-danger mr-5 mt-5", data: { confirm: "本当に退会しますか？"} %>
-      <%= link_to "退会しない", public_users_path(current_user), class: "btn btn-success ml-5 mt-5" %>
-      </center>
+      </div>
     </div>
   </div>
 </div>
