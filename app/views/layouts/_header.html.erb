@@ -68,6 +68,9 @@
                 ログアウト
               <% end %>
             </li>
+            <li class="nav-item">
+              <%= render 'admin/searches/search' %>
+            </li>
           <% else %>
             <li class="nav-item">
               <%= link_to public_path, class: 'nav-link text-success' do %>

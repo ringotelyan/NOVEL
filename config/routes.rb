@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     resources :novels, only: [:index, :show, :edit, :update, :destroy]
     resources :genres, only: [:index, :show, :edit, :create, :update, :destroy]
+    get "search" => "searches#search"
   end
 
   namespace :public, path: "" do
