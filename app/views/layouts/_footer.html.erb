@@ -2,7 +2,10 @@
       <div class="container">
         <div class="row no-gutters">
           <div class="col-md-4 offset-4">
-            <a href="/"><span><center><%= image_tag 'logo.jpg' %></center></span></a>
+            <a href="/"><span><center><%= image_tag 'logo.jpg' %>
+            <%= link_to new_admin_session_path do %>
+              <i class="fas fa-feather text-info"></i>
+            <% end %></center></span></a>
           </div>
         </div>
       </div>
