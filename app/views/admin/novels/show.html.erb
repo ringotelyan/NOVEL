@@ -16,10 +16,13 @@
   </div>
   <div class="row">
     <div class="col-8 offset-2">
-      <table class="table">
+      <table class="table table-borderless">
         <tr>
           <td><%= safe_join(@novel.body.split("\n"),tag(:br)) %></td>
         </tr>
+        <td>
+            コメント件数: <%= @novel.active_comments.count %>
+        </td>
         <tr>
           <td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td>
         </tr>

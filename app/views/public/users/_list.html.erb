@@ -18,12 +18,12 @@
             <tr><td><%= user.introduction %></td></tr>
             <tr>
               <td id="following_count_<%= user.id %>">
-                <%= link_to "#{ user.followings.count }フォロー", public_user_followings_path(user), class:"text-success" %>
+                <%= link_to "#{ user.active_followings.count }フォロー", public_user_followings_path(user), class:"text-success" %>
               </td>
             </tr>
             <tr>
               <td id="follower_count_<%= user.id %>">
-                <%= link_to "#{ user.followers.count }フォロワー", public_user_followers_path(user), class:"text-success" %>
+                <%= link_to "#{ user.active_followers.count }フォロワー", public_user_followers_path(user), class:"text-success" %>
               </td>
             </tr>
             <% if user == current_user %>

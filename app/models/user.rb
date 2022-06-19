@@ -57,13 +57,17 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-  # def active_followings
-  #   followings.where(is_deleted: false)
-  # end
+  def active_followings
+    # is_deletedがfalseの人のidだけを取って来る処理
+    # selectメソッドは条件を指定してその条件を満たすものだけを抜き出す
+    # {unless~~}は~~がfalseの時だけidを返すようになっている
+    followings.select {|following|following unless following.is_deleted}
+    # followings.where(is_deleted: false)
+  end
 
-  # def active_followers
-  #   followers.where(is_deleted: false)
-  # end
+  def active_followers
+    followers.select {|follower|follower unless follower.is_deleted}
+  end
 
   # 検索方法分岐
   def self.looks(search, word)
