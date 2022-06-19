@@ -22,7 +22,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
-    resources :novels, only: [:index, :show, :edit, :update, :destroy]
+    resources :novels, only: [:index, :show, :edit, :update, :destroy] do
+      resources :novel_comments, only: [:destroy]
+    end
     resources :genres, only: [:index, :show, :edit, :create, :update, :destroy]
     get "search" => "searches#search"
   end
