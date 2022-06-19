@@ -7,7 +7,6 @@ class Admin::NovelsController < ApplicationController
     @novel = Novel.find(params[:id])
     @genre = @novel.genre_id
     @user = @novel.user
-    @novel_comment = NovelComment.new
   end
 
   def edit
