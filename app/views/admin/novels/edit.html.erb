@@ -1,5 +1,10 @@
 <div class="container">
   <div class="row">
+    <div class="col text-center mt-1", style="background-color: #99cccc;">
+      <%= flash.now[:alert] %>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-8 offset-2 mt-3">
       <h4>小説編集</h4>
     </div>
@@ -16,7 +21,7 @@
           </td></tr>
           <tr><td><strong>小説本文</strong></td></tr>
           <tr><td><%= f.text_area :body, rows: 10, cols: 90 %></td></tr>
-          <tr><td><%= f.submit '変更を保存する' %></td></tr>
+          <tr><td><%= f.submit '変更を保存する', data: { confirm: "本当に変更しますか？"} %></td></tr>
         </table>
       <% end %>
     </div>

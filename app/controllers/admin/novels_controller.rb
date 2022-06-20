@@ -17,9 +17,11 @@ class Admin::NovelsController < ApplicationController
   def update
     @novel = Novel.find(params[:id])
     if @novel.update(novel_params)
+      flash[:notice] = '小説の編集に成功しました'
       redirect_to admin_novel_path(@novel)
     else
       @genres = Genre.all
+      flash.now[:alert] = '小説の編集に失敗しました'
       render :edit
     end
   end
@@ -27,6 +29,7 @@ class Admin::NovelsController < ApplicationController
   def destroy
     @novel = Novel.find(params[:id])
     @novel.destroy
+    flash[:notice] = '小説の削除に成功しました'
     redirect_to admin_novels_path
   end
 
