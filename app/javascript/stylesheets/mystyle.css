@@ -38,17 +38,21 @@
   display: flex;
   justify-content: center;
 }
+/* 表示しているページ番号のデザイン */
 .pagination > li > a {
   border: none;
-  color: #999;
+  color: #33ffcc;
 }
 .pagination > li > a:hover {
-  color: turquoise;
-  background-color: white;
+  color: #33cc33;
+  background-color: #ffffcc;
+  border-radius: 15px;     /*角を丸くする*/
 }
+/* 表示しているページ番号のデザイン */
 .pagination > .active > a {
-  color: turquoise;
-  background-color: white;
+  color: #33ccff;
+  background-color: #ccff99;
+  border-radius: 15px;     /*角を丸くする*/
 }
 .pagination > .active > a:hover {
   background-color: white;
