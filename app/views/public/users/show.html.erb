@@ -1,5 +1,10 @@
 <div class="container">
   <div class="row">
+    <div class="col text-center mt-1", style="background-color: #99cccc;">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+  <div class="row">
     <!--ユーザーの詳細-->
     <%= render 'list', user: @user %>
 
