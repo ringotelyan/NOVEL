@@ -13,3 +13,5 @@ ja:
         genre: ジャンル
       novel_comment:
         comment: コメント
+      genre:
+        name: ジャンル名
