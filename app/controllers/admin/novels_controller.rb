@@ -1,6 +1,6 @@
 class Admin::NovelsController < ApplicationController
   def index
-    @novels = Novel.all
+    @novels = Novel.page(params[:page]).per(10)
   end
 
   def show
