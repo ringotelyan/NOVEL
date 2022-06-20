@@ -1,10 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-3">
+    <div class="col-sm-12 col-md-6 offset-md-3">
       <h4 class="text-success mt-5"><span style="background-color: #ccffcc;"><strong><%= @user.name %></strong></span>さんとのチャットルーム</h4>
 
         <ul id="message", style="list-style: none;", class="mt-5">
-          <table class="table table-borderless">
           <% @chats.each do |chat| %>
             <% if chat.user_id == current_user.id %>
 
@@ -13,7 +12,6 @@
               <li style="text-align: left; background-color: #ccffcc;"><%= chat.message %></li>
             <% end %>
           <% end %>
-          </table>
         </ul>
 
       <div class="row justify-content-end">

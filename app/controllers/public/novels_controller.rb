@@ -60,8 +60,13 @@ class Public::NovelsController < ApplicationController
 
   def destroy
     @novel = Novel.find(params[:id])
-    @novel.destroy
-    redirect_to public_novels_path
+    if @novel.destroy
+      flash[:notice] = '小説を削除しました'
+      redirect_to public_novels_path
+    else
+      flash.now[:notice] = '小説の削除に失敗しました'
+      render :edit
+    end
   end
 
   # 投稿データのストロングパラメータ
