@@ -14,6 +14,7 @@ class Public::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     @genre.save
+    flash[:notice] = 'ジャンルの追加に成功しました'
     redirect_to public_genres_path
   end
 
