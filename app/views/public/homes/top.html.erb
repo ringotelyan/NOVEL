@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-3 mt-5">
+    <div class="col text-center mt-1", style="background-color: #99cccc;">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-6 offset-md-3 mt-5">
       <p>
         <center>
         <h4 class="text-success">ようこそ<strong>5HUNOVEL-ゴフノベル-へ！</strong></h4>
@@ -12,7 +17,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4 offset-4 mt-5">
+    <div class="col-sm-12 col-md-4 offset-md-4 mt-5">
       <center>
       <%= link_to "ログイン", new_user_session_path, class:"btn btn-success mr-5 mb-5" %>
       <%= link_to "会員登録", new_user_registration_path, class:"btn btn-outline-success ml-5 mb-5" %><br>

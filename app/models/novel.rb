@@ -10,7 +10,7 @@ class Novel < ApplicationRecord
   has_many :view_counts, dependent: :destroy
 
   validates :title, presence: true
-  validates :body, presence: true, length: { minimum: 2000, maximum: 3000 }
+  validates :body, presence: true, length: { maximum: 3000 }
 
   # 退会していない人のいいねだけを抽出するメソッド
   def active_favorites
