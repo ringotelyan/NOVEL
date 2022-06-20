@@ -10,3 +10,8 @@ ja:
       novel:
         title: タイトル
         body: 小説本文
+        genre: ジャンル
+      novel_comment:
+        comment: コメント
+      genre:
+        name: ジャンル名

@@ -1,26 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 offset-2 mt-3">
-      <div class="index-wrapped">
+    <div class="col-sm-12 col-md-8 offset-md-2 mt-3">
+      <div class="newnovel-wrapped">
         <%= flash.now[:alert] %>
         <h4 style="background-color: #99ff99;", class="text-white pl-5">ゴフノベル投稿フォーム</h4>
         <%= render 'error', novel: @novel %>
         <%= form_with model: @novel, url: public_novels_path, method: :post do |f| %>
-          <table class="table table-borderless">
-            <tr><td><strong>タイトル</strong></td></tr>
-            <tr><td><%= f.text_field :title, size: 85 %></td></tr>
-            <tr><td><strong>ジャンル</strong></td></tr>
-            <tr><td>
-              <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "--選択してください--") %>
-            </td></tr>
-            <tr><td>
-              <%= link_to "ジャンルを新しく追加したい場合はこちらで追加してください", public_genres_path, class:"text text-secondary" %><br>
-              <p class="text-danger">※入力したデータは保存されませんのでご注意ください。</p>
-            </td></tr>
-            <tr><td><strong>小説本文</strong></td></tr>
-            <tr><td><%= f.text_area :body, rows: 10, cols: 90 %></td></tr>
-            <tr><td><center><%= f.submit '投稿する', class:"btn btn-lg btn-success" %></center></td></tr>
-          </table>
+          <div class="field ml-2">
+           <%= f.label :title %><br>
+           <%= f.text_field :title, width: '100%' %>
+          </div>
+          <div class="field ml-2">
+            <%= f.label :genre %><br>
+            <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "--選択してください--") %>
+          </div>
+          <p class="ml-2">
+            <%= link_to "ジャンルを新しく追加したい場合はこちらで追加してください", public_genres_path, class:"text text-secondary" %><br>
+            <p class="text-danger ml-1 mr-1">※入力したデータは保存されませんのでご注意ください。</p>
+          </p>
+          <div class="textarea ml-2">
+            <%= f.label :body %><br>
+            <%= f.text_area :body, rows: '10%' %>
+          </div>
+          <div class="actions text-center">
+            <%= f.submit '投稿する', class:"btn btn-lg btn-success" %>
+          </div>
         <% end %>
       </div>
     </div>

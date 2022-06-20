@@ -1,32 +1,41 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 offset-2 mt-5">
-      <div class="index-wrapped">
+    <div class="col text-center mt-1", style="background-color: #99cccc;">
+      <%= flash[:notice] %>
+      <%= flash.now[:alert] %>
+      <% if @genre.errors.any? %>
+        <%= @genre.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @genre.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 offset-md-2 mt-5">
+      <div class="index-wrapped text-center">
         <h4 style="background-color: #99ff99;", class="text-white pl-5">ジャンル作成</h4>
         <%= form_with model: @genre, url: public_genres_path, method: :post do |f| %>
-          <table class="table table-borderless">
-            <tr>
-              <td style="text-align: right;">ジャンル名</td>
-              <td><%= f.text_field :name, size: 60 %></td>
-              <td><%= f.submit '新規登録', class:"btn btn-sm btn-outline-success"%></td>
-            </tr>
-          </table>
+          <div class="field">
+            <%= f.label :name %><%= f.text_field :name %><br>
+            <%= f.submit '新規登録', class:"btn btn-sm btn-outline-success"%>
+          </div>
         <% end %>
-        <center>
         <p class="text text-danger">
           ジャンルは追加すると変更・削除することができません。<br>
           ジャンルを追加される際はお気を付けください。<br>
           また、不適切なジャンルが追加された際は、運営側で改名・削除させていただきます。<br>
           該当小説に関しては一律「ジャンル指定なし」と、登録いたします。
         </p>
-        </center>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 offset-3 mt-3">
+    <div class="col-sm-12 col-md-6 offset-md-3 mt-3">
       <h6 class="text-info pl-5", style="background: #e6ffe9;">ジャンル一覧</h6>
-      <div class="row row-cols-2 offset-1 row-cols-md-2 g-4">
+      <div class="row row-cols-2 offset-1 row-cols-sm-1 row-cols-md-2 g-4">
         <% @genres.each do |genre| %>
           <%= link_to public_genre_path(genre), class:"text-success" do %>
             <%= genre.name %>

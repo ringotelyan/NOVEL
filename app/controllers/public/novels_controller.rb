@@ -23,9 +23,9 @@ class Public::NovelsController < ApplicationController
 
   def index
     # @novels = Novel.includes(:favorited_users)
-    novels = Novel.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
-    @novels = Kaminari.paginate_array(novels).page(params[:page]).per(10)
-
+    #novels = Novel.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    #@novels = Kaminari.paginate_array(novels).page(params[:page]).per(10)
+    @novels = Novel.left_joins(:active_favorites).group(:id).order('count(favorites.novel_id) desc').page(params[:page]).per(10)
       #sort {|a,b|
         #b.favorited_users.size <=>
         #a.favorited_users.size}
@@ -60,8 +60,13 @@ class Public::NovelsController < ApplicationController
 
   def destroy
     @novel = Novel.find(params[:id])
-    @novel.destroy
-    redirect_to public_novels_path
+    if @novel.destroy
+      flash[:notice] = '小説を削除しました'
+      redirect_to public_novels_path
+    else
+      flash.now[:notice] = '小説の削除に失敗しました'
+      render :edit
+    end
   end
 
   # 投稿データのストロングパラメータ

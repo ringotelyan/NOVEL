@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 offset-2 mt-5">
+    <div class="col text-center mt-1", style="background-color: #99cccc;">
       <%= flash.now[:alert] %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2 mt-5">
       <h3>ゴフノベル編集フォーム</h3>
       <%= render 'error', novel: @novel %>
       <%= form_with model: @novel, url: public_novel_path(@novel.id), method: :patch do |f| %>

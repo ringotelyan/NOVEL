@@ -1,5 +1,10 @@
 <div class="cantainer">
   <div class="row">
+    <div class="col text-center mt-1", style="background-color: #99cccc;">
+      <%= flash.now[:alert] %>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-6 offset-3 mt-5">
       <h4>ジャンル編集</h4>
       <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch do |f| %>

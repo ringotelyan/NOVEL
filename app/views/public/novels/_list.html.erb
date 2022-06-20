@@ -3,21 +3,15 @@
       <% if novel.user.is_deleted == false %>
           <tbody>
             <tr id="novel_<%= novel.id %>">
-              <td>
+              <td width="50%">
                 <%= link_to public_novel_path(novel.id), class:"text-success" do %>
                   <%= novel.title %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to public_user_path(novel.user), class:"text-success" do %>
+                <% end %><br>
+                <%= link_to public_user_path(novel.user), class:"text-info" do %>
                   <%= novel.user.name %>
                 <% end %>
               </td>
-              <td id="novel_<%= novel.id %>_btn"><%= render "public/favorites/btn", novel: novel %></td>
-              <td>
-                <%= link_to "#{novel.active_comments.count} コメント", public_novel_path(novel.id), class:"text-success" %><br>
-                閲覧数: <%= novel.view_counts.count %>
-              </td>
+              <td id="novel_<%= novel.id %>_btn" style="text-align: right;"><%= render "public/favorites/btn", novel: novel %></td>
             </tr>
           </tbody>
       <% end %>

@@ -8,19 +8,21 @@ class Novel < ApplicationRecord
   # favoritesテーブルを通ってuserモデルのデータを持ってくる
   has_many :favorited_users, through: :favorites, source: :user
   has_many :view_counts, dependent: :destroy
+  has_many :active_favorites, lambda { where(user_id: User.deleted.pluck(:id)) }, class_name: 'Favorite'
+  has_many :active_comments, lambda { where(user_id: User.deleted.pluck(:id)) }, class_name: 'NovelComment'
 
   validates :title, presence: true
-  validates :body, presence: true, length: { minimum: 2000, maximum: 3000 }
+  validates :body, presence: true, length: { maximum: 3000 }
 
   # 退会していない人のいいねだけを抽出するメソッド
-  def active_favorites
-    favorites.joins(:user).where(user:{ is_deleted: false })
-  end
+  #def active_favorites
+  #  favorites.joins(:user).where(user:{ is_deleted: false })
+  #end
 
   # 退会していない人のコメントだけを抽出するメソッド
-  def active_comments
-    novel_comments.joins(:user).where(user:{ is_deleted: false })
-  end
+  #def active_comments
+  #  novel_comments.joins(:user).where(user:{ is_deleted: false })
+  #end
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

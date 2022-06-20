@@ -1,5 +1,10 @@
 <div class="container">
   <div class="row">
+    <div class="col text-center mt-1", style="background-color: #99cccc;">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-8 offset-2 mt-3">
       <h4><%= @user.name %>さんのプロフィール詳細</h4>
       <p><%= image_tag @user.get_profile_image(100, 100) %></p>
