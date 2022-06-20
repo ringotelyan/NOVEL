@@ -33,12 +33,12 @@
   </div>
   <div class="row">
     <div class="col-sm-12 col-md-8 offset-md-2 mt-5">
-      <table class="table table-borderless novel_comments">
+      <div class="novel_comments">
         <h6 class="text-info pl-5", style="background: #e6ffe9;">コメント</h6>
-        <tbody id="comment_area">
+        <p id="comment_area">
           <%= render 'public/novel_comments/index', novel: @novel %>
-        </tbody>
-      </table>
+        </p>
+      </div>
     </div>
   </div>
   <div class="row">
