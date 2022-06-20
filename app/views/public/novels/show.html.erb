@@ -6,32 +6,28 @@
   </div>
   <div class="row">
     <div class="col-sm-12 col-md-8 offset-md-2 mt-3">
-      <div class="index-wrapped">
-      <table class="table table-borderless">
-        <tr><td><h3><center><%= @novel.title %></center></h3></td></tr>
-        <tr><td><center>
-          <%= link_to public_user_path(@novel.user), class:"text-success" do %>
-            <%= @novel.user.name %>
-          <% end %>
-        </center></td></tr>
-        <tr><td><center>ジャンル:
-          <%= link_to public_genre_path(@genre), class:"text-info" do %>
-            <%= @novel.genre.name %>
-          <% end %>
-        </center></td></tr>
+      <div class="index-wrapped px-3">
+        <div class="text-center mt-3 mb-3">
+        <h4><%= @novel.title %></h4><br>
+        <%= link_to public_user_path(@novel.user), class:"text-success" do %>
+          <%= @novel.user.name %>
+        <% end %><br>
+        ジャンル:
+        <%= link_to public_genre_path(@genre), class:"text-info" do %>
+          <%= @novel.genre.name %>
+        <% end %><br>
+        </div>
         <!--以下の記述で、連続した改行・段落が可能-->
-        <tr><td><%= safe_join(@novel.body.split("\n"),tag(:br)) %></td></tr>
-        <tr><td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td></tr>
-      </table>
-      <table class="table table-borderless">
-        <tr id="novel_<%= @novel.id %>">
-          <td id="novel_<%= @novel.id %>_btn"><%= render "public/favorites/btn", novel: @novel %></td>
-          <td id="comment_count">
-            コメント件数: <%= @novel.active_comments.count %>
-          </td>
-          <td>閲覧数: <%= @novel.view_counts.count %></td>
-        </tr>
-      </table>
+        <%= safe_join(@novel.body.split("\n"),tag(:br)) %>
+        <p class="mt-2">投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %>
+          <div id="novel_<%= @novel.id %>">
+            <div id="novel_<%= @novel.id %>_btn"><%= render "public/favorites/btn", novel: @novel %></div>
+            <div id="comment_count">
+              コメント件数: <%= @novel.active_comments.count %>
+            </div>
+            <div>閲覧数: <%= @novel.view_counts.count %></div>
+          </div>
+        </p>
       </div>
     </div>
   </div>
@@ -46,22 +42,16 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-sm-12 col-md-8 offset-2">
       <% if current_user.name != "ゲストユーザー" %>
-      <%= form_with(model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post, local: false) do |f| %>
-        <table class="table table-borderless">
-        <%#= render 'public/novel_comments/form', novel: @novel, novel_comment: @novel_comment %>
-
-          <tr>
-            <td><%= f.text_area :comment, id: "novel_comment_comment", rows: '5', placeholder: "コメントをここに", cols: 100 %></td>
-          </tr>
-          <tr><td style="text-align: right;"><%= f.submit "コメント送信", class:"btn btn-sm btn-outline-info" %></td></tr>
-
-      　</table>
-      <% end %>
+        <%= form_with(model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post, local: false) do |f| %>
+            <%= f.label :comment %><br>
+            <%= f.text_area :comment, id: "novel_comment_comment", rows: '5', placeholder: "コメントをここに", cols: 100 %>
+            <div class="field", style="text-align: right;"><%= f.submit "コメント送信", class:"btn btn-sm btn-outline-info" %></div>
+        <% end %>
       <% end %>
     </div>
-    <div class="col-md-4 offset-md-4">
+    <div class="col-sm-12 col-md-4 offset-md-4 text-center">
       <table class="table table-borderless">
         <% if @novel.user == current_user %>
           <tr>

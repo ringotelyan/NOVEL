@@ -67,6 +67,10 @@
 }
 
 .textarea {
-  width: 200%;
+  width: calc(100% - 0.5rem);
   height: 10%;
+}
+
+.textarea textarea {
+  width: 100%;
 }
