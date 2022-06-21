@@ -2,11 +2,12 @@
   <div class="row">
     <div class="col text-center mt-1", style="background-color: #99cccc;">
       <%= flash.now[:alert] %>
+      <%= render 'error', user: @user %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-8 offset-2 mt-3">
-      <h4>ユーザー情報編集</h4>
+      <h4>会員情報編集</h4>
     </div>
   </div>
   <div class="row">
@@ -15,7 +16,7 @@
         <table class="table table-borderless">
 
           <tr>
-            <td><label for="inputName">ユーザー名</label></td>
+            <td><label for="inputName">会員名</label></td>
             <td><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"ユーザー名" %></td>
           </tr>
           <tr>
