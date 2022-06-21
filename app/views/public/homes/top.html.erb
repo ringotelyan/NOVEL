@@ -17,10 +17,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-12 col-md-4 offset-md-4 mt-5">
-      <center>
+    <div class="col-sm-12 col-md-4 offset-md-4 mt-5 text-center">
         <% if user_signed_in? %>
-          <%= link_to "ゲストの方はこちらから（閲覧用)", users_guest_sign_in_path, method: :post, class:"text-secondary pt-5" %><br>
           <%= link_to "5HUNOVELとは？", public_about_path, class:"text-secondary mt-2" %>
         <% elsif admin_signed_in? %>
           <%= link_to "ユーザー管理画面へ戻る", admin_users_path, class:"btn btn-danger" %>
@@ -30,8 +28,6 @@
           <%= link_to "ゲストの方はこちらから（閲覧用)", users_guest_sign_in_path, method: :post, class:"text-secondary pt-5" %><br>
           <%= link_to "5HUNOVELとは？", public_about_path, class:"text-secondary mt-2" %>
         <% end %>
-
-      </center>
     </div>
   </div>
 

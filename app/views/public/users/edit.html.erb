@@ -2,21 +2,22 @@
   <div class="row">
     <div class="col text-center mt-1", style="background-color: #99cccc;">
       <%= flash[:notice] %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-8 offset-2 mt-5">
-      <div class="index-wrapped">
-        <h4 style="background-color: #99ff99;", class="text-white pl-5">ユーザープロフィール編集フォーム</h4>
-        <% if @user.errors.any? %>
+      <% if @user.errors.any? %>
           <%= @user.errors.count %>件のエラーが発生しました
-          <ul>
+          <ul style="list-style: none;">
             <% @user.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
           </ul>
         <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-8 offset-md-2 mt-5">
+      <div class="index-wrapped">
+        <h4 style="background-color: #99ff99;", class="text-white pl-5">ユーザープロフィール編集フォーム</h4>
+
         <%= form_with model: @user, url: public_user_path, method: :patch do |f| %>
           <table class="table table-borderless">
             <tr><td><strong><label for="inputName">ユーザー名</label></strong></td></tr>

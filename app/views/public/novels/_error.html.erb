@@ -1,7 +1,7 @@
 
       <% if novel.errors.any? %>
         <%= novel.errors.count %>件のエラーが発生しました
-        <ul>
+        <ul style="list-style: none;">
           <% novel.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
