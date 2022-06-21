@@ -1,10 +1,16 @@
 <div class="container">
+    <div class="row">
+    <div class="col text-center mt-1", style="background-color: #99cccc;">
+      <%= flash.now[:alert] %>
+      <%= render 'error', novel: @novel %>
+    </div>
+  </div>
   <div class="row">
     <div class="col-sm-12 col-md-8 offset-md-2 mt-3">
       <div class="newnovel-wrapped">
-        <%= flash.now[:alert] %>
+        
         <h4 style="background-color: #99ff99;", class="text-white pl-5">ゴフノベル投稿フォーム</h4>
-        <%= render 'error', novel: @novel %>
+        
         <%= form_with model: @novel, url: public_novels_path, method: :post do |f| %>
           <div class="field ml-2">
            <%= f.label :title %><br>

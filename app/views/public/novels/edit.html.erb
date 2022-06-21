@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col text-center mt-1", style="background-color: #99cccc;">
       <%= flash.now[:alert] %>
+      <%= render 'error', novel: @novel %>
     </div>
   </div>
   <div class="row">

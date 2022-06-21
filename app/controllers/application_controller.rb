@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_users_path
     when User
-      public_novels_path
+      public_user_path(current_user)
     end
   end
 

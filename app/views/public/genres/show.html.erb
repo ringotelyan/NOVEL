@@ -4,6 +4,7 @@
       <div class="index-wrapped">
         <h4 style="background-color: #99ff99;", class="text-white pl-5"><%= @genre. name%></h4>
         <%= render 'public/novels/list', novels: @novels%>
+      <%= link_to "ジャンル一覧へ", public_genres_path, class:"btn btn-sm btn-secondary" %>
       </div>
     </div>
   </div>
