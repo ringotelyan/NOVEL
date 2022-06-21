@@ -7,7 +7,7 @@ class Public::SessionsController < Devise::SessionsController
     user = User.guest
     sign_in user
     flash[:notice] = 'ゲストユーザーとしてログインしました'
-    redirect_to public_novels_path
+    redirect_to public_user_path(user)
   end
 
   protected
