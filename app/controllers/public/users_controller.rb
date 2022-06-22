@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
 
   def index
-    users = User.deleted
+    users = User.where.not(name: "ゲストユーザー").deleted
     @users = Kaminari.paginate_array(users).page(params[:page]).per(10)
     @user = current_user
   end
