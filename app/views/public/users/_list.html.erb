@@ -31,22 +31,20 @@
               <tr>
                 <td><%= link_to "プロフィール編集", edit_public_user_path(user), class: "btn btn-success" %></td>
               </tr>
-            <% end %>
-
-            <% if current_user != user %>
+            <% else %>
+              <% if current_user.name != "ゲストユーザー" %>
               <tr><td>
                 <%= link_to "メッセージを送る", public_chat_path(user), class:"btn btn-sm btn-outline-info" %>
               </td></tr>
+              <% end %>
             <% end %>
 
           <% end %>
-        <tr>
-          <td id="follow_form_<%= user.id %>">
-            <%= render 'public/relationships/follow_btn', user: user %>
-          </td>
-        </tr>
-        <% else %>
-          <tr><td>退会したユーザーです</td></tr>
+          <tr>
+            <td id="follow_form_<%= user.id %>">
+              <%= render 'public/relationships/follow_btn', user: user %>
+            </td>
+          </tr>
         <% end %>
       </div>
     </table>

@@ -46,22 +46,23 @@
       <% if current_user.name != "ゲストユーザー" %>
         <div class="textarea">
         <%= form_with(model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel.id), method: :post, local: false) do |f| %>
-            <%= f.label :comment %><br>
-            <%= f.text_area :comment, id: "novel_comment_comment", rows: '5', placeholder: "コメントをここに", cols: 100 %>
-            <div class="field", style="text-align: right;"><%= f.submit "コメント送信", class:"btn btn-sm btn-outline-info" %></div>
+          <%= f.label :comment %><br>
+          <%= f.text_area :comment, id: "novel_comment_comment", rows: '5', placeholder: "コメントをここに", cols: 100 %>
+          <div class="field", style="text-align: right;"><%= f.submit "コメント送信", class:"btn btn-sm btn-outline-info" %></div>
         <% end %>
         </div>
       <% end %>
+
     </div>
-    <div class="col-sm-12 col-md-4 offset-md-4 text-center">
-      <table class="table table-borderless">
-        <% if @novel.user == current_user %>
-          <tr>
-            <td><%= link_to "小説を編集する", edit_public_novel_path(@novel.id), class: "btn btn-success" %></td>
-            <td><%= button_to "小説を削除する", public_novel_path(@novel), method: :delete, class: "btn btn-danger", data: { confirm: "本当に削除しますか？"} %></td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
+
+    <% if @novel.user == current_user %>
+      <div class="col-sm-12 col-md-4 offset-md-4 mt-2 mb-3 text-center">
+        <div class="form-inline">
+          <%= link_to "小説を編集する", edit_public_novel_path(@novel.id), class: "btn btn-success mr-3" %>
+          <%= button_to "小説を削除する", public_novel_path(@novel), method: :delete, class: "btn btn-danger ml-3", data: { confirm: "本当に削除しますか？"} %>
+        </div>
+      </div>
+    <% end %>
+
   </div>
 </div>

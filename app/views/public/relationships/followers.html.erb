@@ -7,7 +7,7 @@
         <%= render 'follow_list', users: @users %>
       </div>
       <div class="text-center">
-        <%= link_to public_user_path(@user), class:"btn btn-sm btn-info" do %>
+        <%= link_to public_user_path(@user), class:"text-info" do %>
           <%= @user.name %>さんのマイページに戻る
         <% end %>
       </div>
