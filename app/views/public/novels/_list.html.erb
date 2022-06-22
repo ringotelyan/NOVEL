@@ -1,6 +1,6 @@
   <table class="table table-borderless">
     <% novels.each do |novel| %>
-      <% if novel.user.is_deleted == false %>
+
           <tbody>
             <tr id="novel_<%= novel.id %>">
               <td width="50%">
@@ -14,6 +14,6 @@
               <td id="novel_<%= novel.id %>_btn" style="text-align: right;"><%= render "public/favorites/btn", novel: novel %></td>
             </tr>
           </tbody>
-      <% end %>
+
     <% end %>
   </table>

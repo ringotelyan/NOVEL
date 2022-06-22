@@ -3,7 +3,7 @@ ja:
   activerecord:
     attributes:
       user:
-        name: ユーザー名
+        name: 会員名
         email: メールアドレス
         password: パスワード
         introduction: 自己紹介文

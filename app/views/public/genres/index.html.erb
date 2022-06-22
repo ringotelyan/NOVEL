@@ -17,18 +17,22 @@
     <div class="col-sm-12 col-md-8 offset-md-2 mt-5">
       <div class="index-wrapped text-center">
         <h4 style="background-color: #99ff99;", class="text-white pl-5">ジャンル作成</h4>
-        <%= form_with model: @genre, url: public_genres_path, method: :post do |f| %>
-          <div class="field">
-            <%= f.label :name %><%= f.text_field :name %><br>
-            <%= f.submit '新規登録', class:"btn btn-sm btn-outline-success"%>
-          </div>
+        <% if current_user.name != "ゲストユーザー" %>
+          <%= form_with model: @genre, url: public_genres_path, method: :post do |f| %>
+            <div class="field">
+              <%= f.label :name %><%= f.text_field :name %><br>
+              <%= f.submit '新規登録', class:"btn btn-sm btn-outline-success"%>
+            </div>
+          <% end %>
+          <p class="text text-danger">
+            ジャンルは追加すると変更・削除することができません。<br>
+            ジャンルを追加される際はお気を付けください。<br>
+            また、不適切なジャンルが追加された際は、運営側で改名・削除させていただきます。<br>
+            該当小説に関しては一律「ジャンル指定なし」と、登録いたします。
+          </p>
+        <% else %>
+          ゲストユーザーはジャンル登録できません。
         <% end %>
-        <p class="text text-danger">
-          ジャンルは追加すると変更・削除することができません。<br>
-          ジャンルを追加される際はお気を付けください。<br>
-          また、不適切なジャンルが追加された際は、運営側で改名・削除させていただきます。<br>
-          該当小説に関しては一律「ジャンル指定なし」と、登録いたします。
-        </p>
       </div>
     </div>
   </div>

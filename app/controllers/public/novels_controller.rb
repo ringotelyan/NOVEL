@@ -25,7 +25,10 @@ class Public::NovelsController < ApplicationController
     # @novels = Novel.includes(:favorited_users)
     #novels = Novel.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
     #@novels = Kaminari.paginate_array(novels).page(params[:page]).per(10)
-    @novels = Novel.left_joins(:active_favorites).group(:id).order('count(favorites.novel_id) desc').page(params[:page]).per(10)
+    #@novels = Novel.left_joins(:active_favorites).group(:id).order('count(favorites.novel_id) desc').page(params[:page]).per(10)
+    novels = Novel.left_joins(:active_favorites).group(:id).order('count(favorites.novel_id) desc')
+    @novels = novels.includes(:user).where(users: {is_deleted: false}).page(params[:page]).per(10)
+
       #sort {|a,b|
         #b.favorited_users.size <=>
         #a.favorited_users.size}
