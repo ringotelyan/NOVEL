@@ -1,6 +1,5 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:favorites]
   before_action :ensure_guest_user, only: [:edit]
 
   def index
@@ -51,9 +50,6 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
-  def set_user
-    @user = User.find(params[:id])
-  end
 
   def ensure_guest_user
     @user = User.find(params[:id])

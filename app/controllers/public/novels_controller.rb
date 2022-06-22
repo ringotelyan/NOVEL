@@ -1,4 +1,5 @@
 class Public::NovelsController < ApplicationController
+  before_action :authenticate_user!
   before_action :correct_user, only: [:update, :edit]
   before_action :ensure_guest_user, only: [:new]
 
