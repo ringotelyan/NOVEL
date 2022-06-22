@@ -6,5 +6,10 @@
         <h4 style="background-color: #99ff99;", class="text-white pl-5">フォロワー</h4>
         <%= render 'follow_list', users: @users %>
       </div>
+      <div class="text-center">
+        <%= link_to public_user_path(@user), class:"btn btn-sm btn-info" do %>
+          <%= @user.name %>さんのマイページに戻る
+        <% end %>
+      </div>
     </div>
   </div>
