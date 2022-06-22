@@ -26,7 +26,7 @@
           <td><%= safe_join(@novel.body.split("\n"),tag(:br)) %></td>
         </tr>
         <td>
-            コメント件数: <%= @novel.active_comments.count %>
+            コメント件数: <%= @novel.novel_comments.count %>
         </td>
         <tr>
           <td>投稿日: <%= @novel.created_at.strftime('%Y/%m/%d') %></td>

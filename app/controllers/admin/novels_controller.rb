@@ -1,4 +1,6 @@
 class Admin::NovelsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @novels = Novel.page(params[:page]).per(10)
   end
