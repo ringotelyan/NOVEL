@@ -42,7 +42,7 @@
           <th>タイトル</th>
           <th>投稿日</th>
         </thead>
-        <% @novels.each do |novel| %>
+        <% @novels&.each do |novel| %>
           <tbody>
             <tr>
               <td>
