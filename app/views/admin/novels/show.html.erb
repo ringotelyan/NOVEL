@@ -8,13 +8,13 @@
     <div class="col-8 offset-2 mt-5">
       <h4><%= @novel.title %></h4><br>
       <p>
-        <%= link_to admin_genre_path(@genre) do%>
-          <%= @novel.genre.name %>
+        <%= link_to admin_user_path(@user) do %>
+          <%= @novel.user.name %>
         <% end %>
       </p>
       <p>
-        <%= link_to admin_user_path(@user) do %>
-          <%= @novel.user.name %>
+        <%= link_to admin_genre_path(@genre) do%>
+          <%= @novel.genre.name %>
         <% end %>
       </p>
     </div>
