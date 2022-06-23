@@ -19,15 +19,15 @@
         <h4 style="background-color: #99ff99;", class="text-white pl-5">会員プロフィール編集フォーム</h4>
 
         <%= form_with model: @user, url: public_user_path, method: :patch do |f| %>
-          <div class="field ml-2">
+          <div class="field">
             <%= f.label :name %><br>
             <%= f.text_field :name, autofocus: true, id: "inputName", placeholder:"会員名" %>
           </div>
-          <div class="field ml-2">
+          <div class="field">
             <label for="inputImage">プロフィール画像</label><br>
             <%= f.file_field :profile_image, placeholder: "プロフィール画像 ", accept: "image/*" %>
           </div>
-          <div class="textarea ml-2">
+          <div class="textarea">
             <%= f.label :introduction %><br>
             <%= f.text_area :introduction, autofocus: true, rows: 5, cols: 60, id: "inputIntroduction", placeholder:"自己紹介" %>
           </div>
