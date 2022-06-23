@@ -2,6 +2,14 @@
   <div class="row">
     <div class="col text-center mt-1", style="background-color: #99cccc;">
       <%= flash.now[:alert] %>
+      <% if @novel.errors.any? %>
+        <%= @novel.errors.count %>件のエラーが発生しました
+        <ul style="list-style: none;">
+          <% @novel.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
   <div class="row">

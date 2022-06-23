@@ -1,11 +1,14 @@
-<div class="container">
+<div class="container"><div class="row">
+    <div class="col text-center mt-1", style="background-color: #99cccc;">
+      <%= render "public/shared/error_messages", resource: resource %>
+    </div>
+  </div>
   <div class="row">
     <div class="col-12 col-md-4 offset-md-4 px-5 mt-5">
       <div class="in-index text-center">
         <h2 style="background-color: #00cc99;", class="text-white pl-3 mb-4">Sign up</h2>
 
         <%= form_with model: @user, url: user_registration_path do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
 
           <!--ユーザー名登録フォーム-->
           <div class="field">
