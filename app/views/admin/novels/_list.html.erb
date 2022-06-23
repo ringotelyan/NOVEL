@@ -13,7 +13,11 @@
             <%= novel.title %>
           <% end %>
         </td>
-      <td><%= novel.user.name %></td>
+        <td>
+          <%= link_to admin_user_path(novel.user) do %>
+            <%= novel.user.name %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
