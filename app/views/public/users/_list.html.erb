@@ -13,7 +13,7 @@
         <tr><td class="text-success"><%= user.name %></td></tr>
         <% if user.is_deleted == false %>
           <% if user.name != "ゲストユーザー" %>
-            <tr><td><%= user.introduction %></td></tr>
+            <tr><td><%= safe_join(user.introduction.split("\n"),tag(:br)) %></td></tr>
             <tr>
               <td id="following_count_<%= user.id %>">
                 <%= link_to "#{ user.active_followings.count }フォロー", public_user_followings_path(user), class:"text-success" %>
