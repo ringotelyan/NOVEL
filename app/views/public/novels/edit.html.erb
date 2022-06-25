@@ -7,7 +7,8 @@
   </div>
   <div class="row">
     <div class="col-8 offset-2 mt-5">
-      <h3>ゴフノベル編集フォーム</h3>
+      <div class="index-wrapped px-3">
+      <h3 style="background-color: #99ff99;", class="text-white pl-5">ゴフノベル編集フォーム</h3>
       <%= render 'error', novel: @novel %>
       <%= form_with model: @novel, url: public_novel_path(@novel.id), method: :patch do |f| %>
         <table class="table table-borderless">
@@ -26,6 +27,7 @@
           <tr><td><%= f.submit '変更を保存する', class: "btn btn-sm btn-success" %></td></tr>
         </table>
       <% end %>
+      </div>
     </div>
   </div>
 </div>
