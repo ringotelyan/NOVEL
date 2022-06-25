@@ -6,10 +6,9 @@
         <ul id="message", style="list-style: none;", class="mt-5">
           <% @chats.each do |chat| %>
             <% if chat.user_id == current_user.id %>
-
-              <li style="text-align: right; background-color: #90ee90;"><%= chat.message %></li>
+              <li style="text-align: right;"><span style="background-color: #90ee90;"><%= chat.message %></span></li>
             <% else %>
-              <li style="text-align: left; background-color: #ccffcc;"><%= chat.message %></li>
+              <li style="text-align: left;"><span style="background-color: #ccffcc;"><%= chat.message %></span></li>
             <% end %>
           <% end %>
         </ul>
