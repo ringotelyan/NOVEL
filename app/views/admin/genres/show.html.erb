@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2 mt-5">
-      <h4><%= @genre. name%></h4>
-      <%= render 'admin/novels/list', novels: @novels %>
-      <%= link_to "ジャンル一覧へ", admin_genres_path, class:"btn btn-sm btn-secondary" %>
+      <div class="admin-wrapped">
+        <h4 style="background-color: #000088;", class="text-white pl-5"><%= @genre. name%></h4>
+        <%= render 'admin/novels/list', novels: @novels %>
+        <%= link_to "ジャンル一覧へ", admin_genres_path, class:"btn btn-sm btn-secondary" %>
+      </div>
     </div>
   </div>
 </div>

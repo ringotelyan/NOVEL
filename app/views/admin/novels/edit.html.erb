@@ -14,24 +14,22 @@
   </div>
   <div class="row">
     <div class="col-md-8 offset-2 mt-3">
-      <h4>小説編集</h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-8 offset-2">
-      <%= form_with model: @novel, url: admin_novel_path(@novel.id), method: :patch do |f| %>
-        <table class="table table-borderless">
-          <tr><td><strong>タイトル</strong></td></tr>
-          <tr><td><%= f.text_field :title, size: 85 %></td></tr>
-          <tr><td><strong>ジャンル</strong></td></tr>
-          <tr><td>
-            <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "--選択してください--") %>
-          </td></tr>
-          <tr><td><strong>小説本文</strong></td></tr>
-          <tr><td><%= f.text_area :body, rows: 10, cols: 90 %></td></tr>
-          <tr><td><%= f.submit '変更を保存する', data: { confirm: "本当に変更しますか？"} %></td></tr>
-        </table>
-      <% end %>
+      <div class="admin-wrapped">
+        <h4 style="background-color: #000088;", class="text-white pl-5">小説編集</h4>
+        <%= form_with model: @novel, url: admin_novel_path(@novel.id), method: :patch do |f| %>
+          <table class="table table-borderless">
+            <tr><td><strong>タイトル</strong></td></tr>
+            <tr><td><%= f.text_field :title, size: 85 %></td></tr>
+            <tr><td><strong>ジャンル</strong></td></tr>
+            <tr><td>
+              <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "--選択してください--") %>
+            </td></tr>
+            <tr><td><strong>小説本文</strong></td></tr>
+            <tr><td><%= f.text_area :body, rows: 10, cols: 90 %></td></tr>
+            <tr><td><%= f.submit '変更を保存する', class:"btn btn-sm btn-success", data: { confirm: "本当に変更しますか？"} %></td></tr>
+          </table>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

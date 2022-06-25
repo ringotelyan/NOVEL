@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-md-8 offset-2 mt-3">
-      <h4><%= @user.name %>さんのプロフィール詳細</h4>
+      <h4 style="background-color: #000088;", class="text-white pl-5"><%= @user.name %>さんのプロフィール詳細</h4>
       <p><%= image_tag @user.get_profile_image(100, 100) %></p>
     </div>
   </div>
@@ -36,25 +36,27 @@
           </td>
         </tr>
       </table>
-      <h5>投稿したゴフノベル</h5>
-      <table class="table">
-        <thead>
-          <th>タイトル</th>
-          <th>投稿日</th>
-        </thead>
-        <% @novels&.each do |novel| %>
-          <tbody>
-            <tr>
-              <td>
-                <%= link_to admin_novel_path(novel) do %>
-                  <%= novel.title %>
-                <% end %>
-              </td>
-              <td><%= novel.created_at.strftime('%Y/%m/%d') %></td>
-            </tr>
-          </tbody>
-        <% end%>
-      </table>
+      <div class="admin-wrapped">
+      <h5 style="background-color: #000088;", class="text-white pl-5">投稿したゴフノベル</h5>
+        <table class="table">
+          <thead>
+            <th>タイトル</th>
+            <th>投稿日</th>
+          </thead>
+          <% @novels&.each do |novel| %>
+            <tbody>
+              <tr>
+                <td>
+                  <%= link_to admin_novel_path(novel) do %>
+                    <%= novel.title %>
+                  <% end %>
+                </td>
+                <td><%= novel.created_at.strftime('%Y/%m/%d') %></td>
+              </tr>
+            </tbody>
+          <% end%>
+        </table>
+      </div>
       <%= link_to "編集する", edit_admin_user_path(@user), class: "btn btn-success" %>
       <%= link_to "会員一覧へ", admin_users_path, class: "btn btn-secondary" %>
     </div>
