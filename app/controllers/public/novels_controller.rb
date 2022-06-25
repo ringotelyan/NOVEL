@@ -66,7 +66,7 @@ class Public::NovelsController < ApplicationController
     @novel = Novel.find(params[:id])
     if @novel.destroy
       flash[:notice] = '小説を削除しました'
-      redirect_to public_novels_path
+      redirect_to public_user_path(current_user)
     else
       flash.now[:notice] = '小説の削除に失敗しました'
       render :edit
