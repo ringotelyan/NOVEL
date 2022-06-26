@@ -14,7 +14,7 @@
         <%= form_with model: @novel, url: public_novels_path, method: :post do |f| %>
           <div class="field ml-2">
            <%= f.label :title %><br>
-           <%= f.text_field :title, width: '100%' %>
+           <%= f.text_field :title, placeholder: "タイトル", width: '100%' %>
           </div>
           <div class="field ml-2">
             <%= f.label :genre %><br>
@@ -26,10 +26,11 @@
           </p>
           <div class="textarea">
             <%= f.label :body %><br>
-            <%= f.text_area :body, rows: '10', cols: '100' %>
+            <%= f.text_area :body, id:"novel_text", placeholder: "本文（3000文字以内）",rows: '10', cols: '100' %>
+            <span class="count", id="count_body">0文字</span>
           </div>
           <div class="actions text-center">
-            <%= f.submit '投稿する', class:"btn btn-lg btn-success" %>
+            <%= f.submit '投稿する', class:"btn btn-lg btn-success", data: { confirm: "投稿しますか？"} %>
           </div>
         <% end %>
       </div>
