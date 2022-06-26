@@ -31,7 +31,6 @@ class Public::ChatsController < ApplicationController
 
     # roomに紐づくchatsテーブルのレコードを@chatsに格納
     @chats = @room.chats
-    #binding.pry
     # form_withでチャットを送信する際に必要な空のインスタンス
     # ここでroom.idを@chatに代入しておかないと、form_withで記述するroom_idに値が渡らない
     @chat = Chat.new(room_id: @room.id)
@@ -47,5 +46,4 @@ class Public::ChatsController < ApplicationController
   def chat_params
     params.require(:chat).permit(:message, :room_id)
   end
-
 end

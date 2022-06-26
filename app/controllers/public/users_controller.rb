@@ -50,7 +50,6 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
-
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "ゲストユーザー"
@@ -58,5 +57,4 @@ class Public::UsersController < ApplicationController
       redirect_to public_novels_path
     end
   end
-
 end

@@ -24,15 +24,15 @@ class Public::NovelsController < ApplicationController
 
   def index
     # @novels = Novel.includes(:favorited_users)
-    #novels = Novel.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
-    #@novels = Kaminari.paginate_array(novels).page(params[:page]).per(10)
-    #@novels = Novel.left_joins(:active_favorites).group(:id).order('count(favorites.novel_id) desc').page(params[:page]).per(10)
+    # novels = Novel.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    # @novels = Kaminari.paginate_array(novels).page(params[:page]).per(10)
+    # @novels = Novel.left_joins(:active_favorites).group(:id).order('count(favorites.novel_id) desc').page(params[:page]).per(10)
     novels = Novel.left_joins(:active_favorites).group(:id).order('count(favorites.novel_id) desc')
-    @novels = novels.includes(:user).where(users: {is_deleted: false}).page(params[:page]).per(10)
+    @novels = novels.includes(:user).where(users: { is_deleted: false }).page(params[:page]).per(10)
 
-      #sort {|a,b|
-        #b.favorited_users.size <=>
-        #a.favorited_users.size}
+      # sort {|a,b|
+        # b.favorited_users.size <=>
+        # a.favorited_users.size}
     @user = current_user
   end
 
@@ -93,5 +93,4 @@ class Public::NovelsController < ApplicationController
       redirect_to public_novels_path
     end
   end
-
 end

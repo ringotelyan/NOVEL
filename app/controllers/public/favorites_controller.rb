@@ -14,5 +14,4 @@ class Public::FavoritesController < ApplicationController
     favorite.destroy
     # 画面遷移が行われ非同期処理が行われなくなるため、「redirect_to」の記述を削除
   end
-
 end

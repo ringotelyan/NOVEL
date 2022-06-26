@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-
   # 顧客用
   # skipは不要なルーティングを削除
   # URL /users/sign_in ...

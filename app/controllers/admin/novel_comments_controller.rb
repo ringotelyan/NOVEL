@@ -6,5 +6,4 @@ class Admin::NovelCommentsController < ApplicationController
     @comment = NovelComment.find(params[:id])
     @comment.destroy
   end
-
 end

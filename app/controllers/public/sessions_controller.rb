@@ -11,6 +11,7 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   protected
+  
   # 退会しているかを判断するメソッド
   def user_state
     ## 【処理内容１】入力されたemailからアカウントを１権取得

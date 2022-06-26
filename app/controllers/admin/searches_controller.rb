@@ -12,5 +12,4 @@ class Admin::SearchesController < ApplicationController
       @novels = Novel.looks(params[:search], params[:word])
     end
   end
-
 end

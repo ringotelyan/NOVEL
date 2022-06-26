@@ -49,10 +49,12 @@ class User < ApplicationRecord
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
+  
   # フォローを外すときの処理
   def unfollow(user_id)
     relationships.find_by(followed_id: user_id).destroy
   end
+  
   # フォローしているか判定
   def following?(user)
     followings.include?(user)
@@ -62,22 +64,21 @@ class User < ApplicationRecord
     # is_deletedがfalseの人のidだけを取って来る処理
     # selectメソッドは条件を指定してその条件を満たすものだけを抜き出す
     # {unless~~}は~~がfalseの時だけidを返すようになっている
-    followings.select {|following|following unless following.is_deleted}
+    followings.select { |following|following unless following.is_deleted }
     # followings.where(is_deleted: false)
   end
 
   def active_followers
-    followers.select {|follower|follower unless follower.is_deleted}
+    followers.select { |follower|follower unless follower.is_deleted }
   end
 
   # 検索方法分岐
   def self.looks(search, word)
-      @user = User.where("name LIKE?", "%#{word}%")
+    @user = User.where("name LIKE?", "%#{word}%")
   end
 
   # ログイン時に退会済みのユーザーが同じアカウントでログインできないように制約
   def active_for_authentication?
     super && (is_deleted == false)
   end
-
 end

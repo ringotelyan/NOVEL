@@ -55,4 +55,5 @@ if Rails.env.production?
   )
   # デーモン
   daemonize
+
 end
