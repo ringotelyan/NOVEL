@@ -30,9 +30,9 @@ class Public::NovelsController < ApplicationController
     novels = Novel.left_joins(:active_favorites).group(:id).order('count(favorites.novel_id) desc')
     @novels = novels.includes(:user).where(users: { is_deleted: false }).page(params[:page]).per(10)
 
-      # sort {|a,b|
-        # b.favorited_users.size <=>
-        # a.favorited_users.size}
+    # sort {|a,b|
+    # b.favorited_users.size <=>
+    # a.favorited_users.size}
     @user = current_user
   end
 
@@ -83,7 +83,7 @@ class Public::NovelsController < ApplicationController
   def correct_user
     @novel = Novel.find(params[:id])
     @user = @novel.user
-    redirect_to (public_novels_path) unless @user == current_user
+    redirect_to public_novels_path unless @user == current_user
   end
 
   def ensure_guest_user
