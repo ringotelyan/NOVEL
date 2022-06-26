@@ -43,4 +43,5 @@
 - IDE：Cloud9
 
 ## 使用素材
-使用検討中です。
+- ロゴ素材：「ロゴメーカー｜【商用利用OK】無料で誰でも簡単に自分のショップのロゴを作れる」(URL:https://logo-maker.stores.jp/workspace/)
+- ユーザーイメージ画像(テストデータ)：「かわいいフリー素材集 いらすとや」(URL:https://www.irasutoya.com/)
