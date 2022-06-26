@@ -2,21 +2,19 @@
   <table class="table table-borderless">
     <tbody>
       <% users.each do |user| %>
-        <% if user.is_deleted == false %>
-          <tr>
-            <td>
-              <%= link_to public_user_path(user) do %>
-                <%= image_tag user.get_profile_image(50, 50) %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to public_user_path(user), class:"text-success" do %>
-                <%= user.name %>
-              <% end %>
-            </td>
-            <td><%= render 'follow_btn', user: user %></td>
-          </tr>
-        <% end %>
+        <tr>
+          <td>
+            <%= link_to public_user_path(user) do %>
+              <%= image_tag user.get_profile_image(50, 50) %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to public_user_path(user), class:"text-success" do %>
+              <%= user.name %>
+            <% end %>
+          </td>
+          <td><%= render 'follow_btn', user: user %></td>
+        </tr>
       <% end %>
     </tbody>
   </table>
