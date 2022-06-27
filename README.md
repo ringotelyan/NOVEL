@@ -31,7 +31,7 @@
 - 小説を書く人とつながりたいとき
 
 ## 設計書
-- ER図(URL:https://convert.diagrams.net/node/export)
+- ER図(URL:https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Untitled%20Diagram.drawio#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D14E7O_3gifBvsw7TjaIX2_vyLe13z1ya9%26export%3Ddownload)
 - テーブル提議書(URL: https://docs.google.com/spreadsheets/d/1M2ILLw6dsf4YOn_NN2ffI2oiJ9_yTc7tsPfkOMGRFMs/edit#gid=1373217982)
 - アプリケーション設計書(URL: https://docs.google.com/spreadsheets/d/11KiN49PhhFmr7rOHEIm0UyQiFiNhRf6PIbrEI1CRKss/edit#gid=1031934256)
 
