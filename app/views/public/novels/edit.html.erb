@@ -7,6 +7,7 @@
   </div>
   <div class="row">
     <div class="col-sm-12 col-md-8 offset-md-2 mt-5">
+      <%= link_to "＜ 編集をやめる", public_novel_path(@novel), class:"text-info" %>
       <div class="index-wrapped px-3">
       <h3 style="background-color: #99ff99;", class="text-white text-center">ゴフノベル編集フォーム</h3>
       <%= form_with model: @novel, url: public_novel_path(@novel.id), method: :patch do |f| %>

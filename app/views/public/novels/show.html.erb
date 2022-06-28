@@ -6,6 +6,11 @@
   </div>
   <div class="row">
     <div class="col-sm-12 col-md-8 offset-md-2 mt-3">
+      <% if @novel.user == current_user %>
+        <%= link_to "＜ マイページへ", public_user_path(current_user), class:"text-info" %>
+      <% else %>
+        <%= link_to "＜ ゴフノベル一覧へ", public_novels_path, class:"text-info" %>
+      <% end %>
       <div class="index-wrapped px-3">
         <div class="text-center mt-3 mb-3">
         <h4><%= @novel.title %></h4><br>
