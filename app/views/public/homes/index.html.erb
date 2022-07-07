@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center mt-1", style="background-color: #99cccc;">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-10 offset-md-1 mt-3">
+      <div class="index-wrapped">
+        <h4 style="background-color: #99ff99;", class="text-white text-center">タイムライン</h4>
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-4 mx-auto">
+          <% if @novels.exists? %>
+            <% @novels.each do |novel| %>
+              <div class="text-center card h-100 mb-1" >
+                <%= link_to public_novel_path(novel.id), class:"text-dark" do %>
+                  <%= novel.title %>
+                <% end %>
+                <%= link_to public_user_path(novel.user), class:"text-info" do %>
+                  <%= novel.user.name %>
+                <% end %>
+                <%= novel.body.truncate(100) %>
+                <%= link_to "続きを読む", public_novel_path(novel.id), class:"text-secondary" %>
+              </div>
+            <% end %>
+          <% else %>
+            <center>表示するゴフノベルがありません。</center>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

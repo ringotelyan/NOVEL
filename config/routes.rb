@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   namespace :public, path: "" do
     get '/' => "homes#top"
     get '/about' => 'homes#about'
+    get '/timeline' => 'homes#index'
     get "search" => "searches#search"
     # 退会確認画面
     get '/users/unsubscribe' => 'users#unsubscribe'
