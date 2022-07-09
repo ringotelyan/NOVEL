@@ -13,7 +13,7 @@
               <%= user.name %>
             <% end %>
           </td>
-          <td><%= render 'follow_btn', user: user %></td>
+          <td id="follow_form_<%= user.id %>"><%= render 'follow_btn', user: user %></td>
         </tr>
       <% end %>
     </tbody>
