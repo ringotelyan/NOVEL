@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
+  before_action :correct_user, only: [:edit, :update]
 
   def index
     users = User.where.not(name: "ゲストユーザー").deleted
@@ -56,5 +57,10 @@ class Public::UsersController < ApplicationController
       flash[:notice] = "ゲストユーザーはプロフィール編集画面へ遷移できません"
       redirect_to public_novels_path
     end
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to (public_novels_path) unless @user == current_user
   end
 end
