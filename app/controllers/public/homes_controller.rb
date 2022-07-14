@@ -6,7 +6,7 @@ class Public::HomesController < ApplicationController
   end
 
   def index
-    novels = Novel.all.order(created_at: :desc)
+    novels = Novel.published.order(created_at: :desc)
     @novels = novels.where(user_id: [current_user.following_ids])
   end
 end

@@ -27,7 +27,8 @@ class Public::NovelsController < ApplicationController
     # novels = Novel.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
     # @novels = Kaminari.paginate_array(novels).page(params[:page]).per(10)
     # @novels = Novel.left_joins(:active_favorites).group(:id).order('count(favorites.novel_id) desc').page(params[:page]).per(10)
-    novels = Novel.left_joins(:active_favorites).group(:id).order('count(favorites.novel_id) desc')
+    publishes = Novel.published
+    novels = publishes.left_joins(:active_favorites).group(:id).order('count(favorites.novel_id) desc')
     @novels = novels.includes(:user).where(users: { is_deleted: false }).page(params[:page]).per(10)
 
     # sort {|a,b|
@@ -73,11 +74,15 @@ class Public::NovelsController < ApplicationController
     end
   end
 
+  def confirm
+    @novels = current_user.novels.draft
+  end
+
   # 投稿データのストロングパラメータ
   private
 
   def novel_params
-    params.require(:novel).permit(:title, :body, :genre_id)
+    params.require(:novel).permit(:title, :body, :genre_id, :status)
   end
 
   def correct_user

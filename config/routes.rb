@@ -40,6 +40,9 @@ Rails.application.routes.draw do
       # 1人のユーザーは1つの投稿に対して1回しか良いね出来ない→resourceを使ってURLに[:id]を含めない
       resource :favorites, only: [:create, :destroy]
       resources :novel_comments, only: [:create, :destroy]
+      collection do
+        get 'confirm'
+      end
     end
     resources :users, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]

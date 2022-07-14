@@ -11,7 +11,8 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @novels = @user.novels # アソシエーションを持っているもの同士の記述
+    user_novels = @user.novels# アソシエーションを持っているもの同士の記述
+    @novels = user_novels.published
     favorites = Favorite.where(user_id: @user.id).pluck(:novel_id)
     @favorite_novels = Novel.find(favorites)
   end

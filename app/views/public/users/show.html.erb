@@ -14,6 +14,11 @@
       <div class="index-wrapped">
       <h4 style="background-color: #99ff99;", class="text-white pl-5">投稿済みゴフノベル一覧</h4>
       <%= render 'public/novels/list', novels: @novels %>
+      <% if @user == current_user %>
+        <% if @user.name != "ゲストユーザー" %>
+          <%= link_to "下書き一覧", confirm_public_novels_path, class:"btn btn-sm btn-outline-success" %>
+        <% end %>
+      <% end %>
       <% if @user.name == "ゲストユーザー" %>
         <p>ゲストユーザーはゴフノベルを投稿できません</p>
       <% end %>
