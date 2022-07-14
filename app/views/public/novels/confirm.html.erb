@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 offset-md-2 mt-3">
+      <%= link_to "＜ マイページへ", public_user_path(current_user), class:"text-info" %>
+      <div class="index-wrapped">
+        <h4 style="background-color: #99ff99;", class="text-white pl-5">下書き一覧</h4>
+        <%= render 'list', novels: @novels %>
+      </div>
+    </div>
+  </div>
+</div>

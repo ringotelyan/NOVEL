@@ -13,6 +13,8 @@ class Novel < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 3000 }
 
+  enum status: { published: 0, draft: 1 }
+
   # 退会していない人のいいねだけを抽出するメソッド
   # def active_favorites
   #  favorites.joins(:user).where(user:{ is_deleted: false })
